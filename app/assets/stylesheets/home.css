@@ -1,0 +1,116 @@
+.div{
+  height: 60px;
+}
+
+body {
+  background-image: url("sfondo.png");
+  font-family: monospace;
+  font-weight:400;
+  font-size: 16px;
+  line-height: 1.8;
+  color:#fff;
+}
+
+svg[name="ic"],img[name="ic"] {
+  vertical-align: middle;
+}
+
+.rounded-pill{
+  pointer-events: auto;
+}
+
+  .elem {
+    /* the color  */
+    --c: #1919ff;
+    /* the height */
+    --h: 1.2em;
+
+    /* The first hover effect in this article */
+    line-height: var(--h);  
+    color: rgb(255, 255, 255);
+    overflow: hidden;
+    background: 
+      linear-gradient(var(--c) 0 0) no-repeat
+      calc(200% - var(--_p, 0%)) 100% / 200% var(--_p, .08em);
+    transition: .3s var(--_s, 0s), background-position .3s calc(.3s - var(--_s, 0s));
+  }
+
+  .elem:hover {
+    --_t: var(--h);
+    --_p: 100%;
+    --_s: .3s
+  }
+
+  .edit {
+    color: rgb(0, 255, 255);
+    text-shadow: 0 0 30px rgb(25, 25, 255);
+  }
+
+  .format {
+    text-shadow: 2px 1px 2px rgb(25, 25, 255);
+  }
+
+  .bg-edit {
+    color:white;
+  }
+
+  .login-dark {
+    height: 100vh;
+    background-image: url("sfondo.png");
+    background-size: cover;
+    position: relative;
+  }
+  
+  .login-dark form {
+    max-width: 320px;
+    width: 90%;
+    background-color: #1e2833;
+    padding: 40px;
+    border-radius: 4px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: #fff;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.7);
+  }
+  
+  .login-dark form .form-control {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #434a52;
+    border-radius: 0;
+    box-shadow: none;
+    outline: none;
+    color: inherit;
+  }
+  
+  .login-dark form .btn-primary {
+    background: #1919FF;
+    border: none;
+    border-radius: 4px;
+    padding: 11px;
+    box-shadow: 0 0 10px rgba(0, 255, 255);
+    margin-top: 26px;
+    text-shadow: none;
+    outline: none;
+  }
+  
+  .login-dark form .btn-primary:hover, .login-dark form .btn-primary:active {
+    color:rgb(0, 255, 255);   
+  }
+  .btn-prime:hover{
+    color:rgb(0, 255, 255);
+  }
+  
+  .login-dark form .forgot {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #6f7a85;
+    opacity: 0.9;
+    text-decoration: none;
+  }
+
+  
+  
