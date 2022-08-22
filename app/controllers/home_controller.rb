@@ -8,5 +8,6 @@ class HomeController < ApplicationController
       @email=params[:email]
       @response=ContactMailer.contact(@email,@subject,@message).deliver_later
     if @response
+    end
   end
 end
