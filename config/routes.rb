@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   post '/send_email', to: 'home#send_email' 
   get '/login', to: 'login#index'
   get '/signup', to: 'signup#index'
+  get '/challenges', to: 'challenges#index'
 end
