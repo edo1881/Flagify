@@ -1,0 +1,165 @@
+
+.b {
+    color: rgb(2, 63, 2);
+}
+svg[name="ic"],img[name="ic"] {
+    vertical-align: middle;
+}
+
+.butt{
+    margin: 150px;  
+}
+.rounded-pill{
+    pointer-events: auto;
+}
+
+.elem {
+    /* the color  */
+    --c: #1919ff;
+    /* the height */
+    --h: 1.2em;
+
+    /* The first hover effect in this article */
+    line-height: var(--h);  
+    color: rgb(255, 255, 255);
+    overflow: hidden;
+    background: 
+      linear-gradient(var(--c) 0 0) no-repeat
+      calc(200% - var(--_p, 0%)) 100% / 200% var(--_p, .08em);
+    transition: .3s var(--_s, 0s), background-position .3s calc(.3s - var(--_s, 0s));
+  }
+
+  .elem:hover {
+    --_t: var(--h);
+    --_p: 100%;
+    --_s: .3s
+  }
+
+canvas {
+    position: absolute;
+    left:0;
+    z-index:-1;
+    background-color: black;
+  }
+.card-img-top {
+    height:25vh;
+    object-fit: cover;
+}
+
+.card-body{
+    height: 118px;
+}
+.container{
+    max-width: none;
+}
+.card {
+    /*width:18rem;*/
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+    /*color: white;*/
+    display: block;
+    text-align: left;
+    background: lightgray;
+    /*background: linear-gradient(to right, rgb(108, 117, 125), rgb(190, 190, 190));*/
+    line-height: 150%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 120px;
+}
+
+div[solved="true"]{
+    background: rgb(40, 167, 69);
+}
+.card:hover {
+    -webkit-box-shadow: -1px 9px 30px -7px rgba(228,6,6,0.75);
+    -moz-box-shadow:  -1px 9px 30px -7px rgba(228, 6, 6, 0.75);
+    box-shadow:  -1px 9px 30px -7px rgba(228, 6, 6, 0.75);
+    transition: all 0.3s ease !important;
+    box-sizing: border-box !important;
+    -webkit-transform: scale(1.1) !important;
+    -ms-transform: scale(1.1) !important;
+    transform: scale(1.1) !important;
+    cursor: pointer !important;
+    text-shadow: none !important;
+    z-index: 2;
+}
+body {
+    font-family: monospace;
+    font-weight:400;
+    font-size: 16px;
+    line-height: 1.8;
+    color:#383b3d;
+}
+
+.modal{
+    animation-name: modal-animation;
+    animation-duration: 0.5s;
+}
+@keyframes modal-animation {
+    from {
+        top: -100px;
+        opacity: 0;
+    }
+    to {
+        top: 0px;
+        opacity: 1;
+    }
+}
+
+/* Da pensarci poi per le freccette */
+/* .owl-carousel .owl-stage-outer{
+    position: absolute;
+    width: -moz-available;
+}
+.owl-nav{
+    height: 168px;
+    position: absolute;
+} */
+
+
+span[aria-label="Previous"]{
+    font-size: 50px;
+}
+span[aria-label="Next"]{
+    font-size: 50px;
+}
+
+.canvasContainer
+{
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    z-index: -1;
+    background-color: Black;
+}
+
+.contextCanvas
+{   position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}
+.div{
+    height: 60px;
+}
+h1{
+    color: white;
+}
+
+nav{
+    z-index: 10;
+}
+
+a:hover{
+    color: grey;
+}
+/*main{
+    background: black;
+}*/
+.owl-nav{
+    display: none;
+}
