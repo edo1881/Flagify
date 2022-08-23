@@ -10,3 +10,4 @@ if (window.innerWidth < 768) {
 document.addEventListener('DOMContentLoaded', function() {
 	AOS.init();
 }, false);
+

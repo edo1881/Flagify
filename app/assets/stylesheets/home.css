@@ -1,7 +1,17 @@
 .div{
   height: 60px;
 }
-
+div.alert{
+  position: fixed;
+  top: 50px;
+  left: 25%;
+  right: 25%;
+  z-index: 7000;
+}
+button.btn-close {
+  position:absolute;
+  right: 5%;
+}
 body {
   background-image: url("sfondo.png");
   font-family: monospace;
