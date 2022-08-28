@@ -1,0 +1,15 @@
+db:
+    - tabella challenge
+    - tabella utente challenge
+
+front:
+    - modificare login/singup
+    - scoreboard
+    - profile con lista challenge creator
+    - add challenge
+    - editor*
+    - aggiustare turbolinks
+    - responsiveness navbar
+
+backend:
+    - editor*
