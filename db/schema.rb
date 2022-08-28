@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_08_23_154115) do
+ActiveRecord::Schema.define(version: 2022_08_28_193344) do
+
+  create_table "challenges", force: :cascade do |t|
+    t.string "nome"
+    t.string "testo"
+    t.integer "n_utenti_solv"
+    t.string "flag"
+    t.string "url_image"
+    t.string "category"
+    t.string "hint"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "contact_forms", force: :cascade do |t|
     t.string "email"
@@ -32,6 +44,7 @@ ActiveRecord::Schema.define(version: 2022_08_23_154115) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "roles_mask"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
