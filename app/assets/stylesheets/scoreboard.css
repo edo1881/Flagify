@@ -1,0 +1,47 @@
+body {
+    font-family: monospace;
+    font-weight:400;
+    font-size: 16px;
+    line-height: 1.8;
+    color:#383b3d;
+}
+svg[name="ic"],img[name="ic"] {
+    vertical-align: middle;
+}
+
+.rounded-pill{
+    pointer-events: auto;
+}
+
+a{
+  color: rgb(255, 120, 255);
+}
+a:hover{
+  color: rgb(255, 0, 255);
+  font-weight: bold;
+}
+
+.elem {
+    /* the color  */
+    --c: #1919ff;
+    /* the height */
+    --h: 1.2em;
+
+    /* The first hover effect in this article */
+    line-height: var(--h);  
+    color: rgb(255, 255, 255);
+    overflow: hidden;
+    background: 
+      linear-gradient(var(--c) 0 0) no-repeat
+      calc(200% - var(--_p, 0%)) 100% / 200% var(--_p, .08em);
+    transition: .3s var(--_s, 0s), background-position .3s calc(.3s - var(--_s, 0s));
+  }
+
+  .elem:hover {
+    --_t: var(--h);
+    --_p: 100%;
+    --_s: .3s
+  }
+  a {
+    text-decoration: none;
+  }

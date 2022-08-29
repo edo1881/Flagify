@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%= stylesheet_link_tag "profile" %>
+    <title>Profilo</title>
+</head>
+
+<body>
+    
+    <div class="container">
+        <div class="m-5 py-5 info_profilo">
+            <div class="container">
+                <div class="justify-content-center">
+                    <title style="display: block;font-size: xx-large;">Info profilo</title>
+                    <table class="table user-info table-dark table-striped table-bordered border-white">
+                        <tbody class="scoreboard_table"></tbody>
+                        <tr><td>Username</td><td><%= current_user.full_name %></td></li>
+                        <tr><td>Email</td><td><%= current_user.email %></td></li>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="m-5 py-5">
+            <div class="container">
+                <div class="justify-content-center">
+                    <title style="display: block;font-size: xx-large;">Challenge completate</title>
+                    <table class="table table_challenge_flag table-dark table-striped table-bordered border-white">
+                        <thead>
+                            <tr>
+                              <th class="text-center px-0" scope="col">Timestamp</th>
+                              <th class="text-center" scope="col">Challenges</th>
+                              <th class="text-center" scope="col">Score</th>
+                            </tr>
+                        </thead>
+                        <tbody class="scoreboard_table"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="m-5 py-5">
+            <div class="container">
+                <div class="justify-content-center">
+                    <title style="display: block;font-size: xx-large;">Hint richiesti</title>
+                    <table class="table table_challenge_hint table-dark table-striped table-bordered border-white">
+                        <thead>
+                            <tr>
+                              <th class="text-center px-0" scope="col">Timestamp</th>
+                              <th class="text-center" scope="col">Challenges</th>
+                              <th class="text-center" scope="col">Points lost</th>
+                            </tr>
+                        </thead>
+                        <tbody class="scoreboard_table"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+<%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" %>
+
+<script>
+    window.addEventListener('load', (event) => {
+        getNameBtn();
+        getStatisctics();
+        centra_nav();
+    });
+    window.addEventListener('resize', (event) => {
+            centra_nav();
+        });
+    function centra_nav(){
+        $('.navbar-brand').css('margin-right', ($('#btn_form').outerWidth() - $('.navbar-brand').outerWidth()).toString()+'px') ;
+    }
+</script>
+
+</html>
