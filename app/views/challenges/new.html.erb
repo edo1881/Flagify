@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+    <%= stylesheet_link_tag "login" %>
+    </head>
+    <body>
+        <h1 class="display-4 font-monospace fw-bold  mt-5 text-center" >Create Challenge</h1>
+        <div class="text-center login-dark  ">
+            <%= form_with(model: @chall, class:"form",name:"form",url:"/",method: :post) do |f|%>
+            <div class="field"><%= f.text_field :title,class: "form-control", placeholder: "Title" %><br/></div>
+            <div class="field"><%= f.text_field :cat  ,class:"form-control", placeholder: "Category" %><br/></div>
+            <div class="field"><%= f.text_area :desc  , placeholder: "Description",rows:"4",cols:"24" %><br/></div>
+            <div class="field"><%= f.text_field :flag ,class:"form-control", placeholder: "Flag" %><br/></div>
+            <%=  f.submit :submit, class: "hidden" %>
+            <%end%>
+        </div>
+        
+    </body>
+
+</html>
