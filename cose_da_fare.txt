@@ -3,6 +3,12 @@ db:
     - tabella utente challenge
 
 front:
+    - mettere modal
+    - mettere punteggio challenge in db
+    - mettere posizione giusta scoreboard
+    - pulsante logout non funziona in scoreboard e profilo
+    - query profilo
+    - aggiungere username per chi si registra con email
     - modificare login/singup
     - scoreboard
     - profile con lista challenge creator
