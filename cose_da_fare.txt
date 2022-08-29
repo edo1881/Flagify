@@ -8,8 +8,8 @@ front:
     - profile con lista challenge creator
     - add challenge
     - editor*
-    - aggiustare turbolinks
-    - responsiveness navbar
+    - aggiustare turbolinks(Done by disabling it)
+    - responsiveness navbar(Done by fixing js inline code order)
 
 backend:
     - editor*

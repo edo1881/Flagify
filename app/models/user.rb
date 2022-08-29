@@ -6,8 +6,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
         :omniauthable, omniauth_providers: [:google_oauth2]
   enum role: [:player,:creator,:admin]
-  after_initialize :set_default_role, :if => :new_record?
+  after_initialize :set_default_role
   def set_default_role
+    puts "NEW record added"
     if ADMIN_LIST.include? self.email
       self.role ||=:admin
     else

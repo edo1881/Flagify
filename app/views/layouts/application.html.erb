@@ -2,7 +2,9 @@
 <html>
   <head>
     <title>Flagify</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -13,7 +15,7 @@
     <div>
         <nav class="navbar navbar-expand-lg navbar-light py-2 pb-0 bg-dark"> 
             <a class="navbar-brand me-0" href="/" style="color: white; padding-left: 4px;"><%= image_tag "logo.png",:style=>"height: 45px"%></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#NavbarContent,#btn_form"  style="margin-right: 5%;">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#NavbarContent,#btn_form" aria-expanded="false"  style="margin-right: 5%;" data-turbolinks-permanent>
                     <span class="navbar-toggler-icon" style="filter: invert();"></span>
                 </button>
             <div class="collapse navbar-collapse justify-content-center" id="NavbarContent">
