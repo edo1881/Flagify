@@ -12,13 +12,16 @@
     -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
     transition: outline-offset .15s ease-in-out, background-color .15s linear; border:1px solid #92b0b3;
  }
-.files{ position:relative}
+.files{ 
+    position:relative;
+    right:3%;
+    }
 .files:after {  pointer-events: none;
     position: absolute;
     top: 60px;
     left: 0;
-    width: 50px;
-    right: 0;
+    width: 100%;
+    right: 40%;
     height: 56px;
     content: "";
     display: block;
@@ -32,7 +35,6 @@
     bottom: 10px;
     left: 0;  pointer-events: none;
     width: 100%;
-    right: 0;
     height: 57px;
     content: " or drag it here. ";
     display: block;

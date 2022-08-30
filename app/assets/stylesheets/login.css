@@ -73,8 +73,8 @@
       border-radius: 4px;
       transform: translate(-50%, -50%);
       position: absolute;
-      top: 50%;
-      left: 50%;
+      top: 40%;
+      left: 65%;
       color: #fff;
       box-shadow: 0 0 4px rgba(255, 255, 255, 0.7);
     }
