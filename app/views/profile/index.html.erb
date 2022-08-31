@@ -9,9 +9,9 @@
 <body>
     
     <div class="container">
-        <div class="m-5 py-5 info_profilo">
-            <div class="container">
-                <div class="justify-content-center">
+        <div class="m-5 py-5 info_profilo" style="width: 100%;">
+            <div class="container row">
+                <div class="justify-content-center col">
                     <title style="display: block;font-size: xx-large;">Info profilo</title>
                     <table class="table user-info table-dark table-striped table-bordered border-white">
                         <tbody class="scoreboard_table"></tbody>
@@ -19,6 +19,7 @@
                         <tr><td>Email</td><td><%= current_user.email %></td></li>
                     </table>
                 </div>
+                <button class="col" style="margin: 3rem;border-radius: 30px;background: lightpink;">Diventa un creator</button>
             </div>
         </div>
         <div class="m-5 py-5">
@@ -34,6 +35,14 @@
                             </tr>
                         </thead>
                         <tbody class="scoreboard_table"></tbody>
+                        <% @user.each do |t|%>
+                        <tr>
+                              <th class="text-center px-0" scope="col"><%= t.id%></th>
+                              <th class="text-center" scope="col">Challenges</th>
+                              <th class="text-center" scope="col">Score</th>
+                        </tr>
+                        <%end%>
+                        
                     </table>
                 </div>
             </div>

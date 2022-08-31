@@ -1,7 +1,19 @@
 class ChallengesController < ApplicationController
    before_action :authenticate_user!
    def index
-      @categories = Challenge.select(:category).distinct
+      @categories = Challenge.select(:category).distinct 
+      @current_challenge = Challenge.first
+      # if params.nil?
+      #    @current_challenge = Challenge.first
+      # else
+      #    @current_challenge = Challenge.find(params[:id])
+      # end
+      puts @current_challenge.to_json
+      puts params
+
+   end
+   def show
+
    end
    def new
       @challenge=Challenge.new
