@@ -3,6 +3,7 @@ db:
     - tabella utente challenge
 
 front:
+    - AGGIUSTARE QUESTA CAZZO DI RELAZIONE USER-CHALLENGE!!!!!
     - mettere modal
     - mettere punteggio challenge in db
     - mettere posizione giusta scoreboard
