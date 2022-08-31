@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2022_08_28_193344) do
     t.string "url_image"
     t.string "category"
     t.string "hint"
+    t.integer "score"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
