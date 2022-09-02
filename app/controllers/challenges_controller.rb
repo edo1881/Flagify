@@ -3,11 +3,6 @@ class ChallengesController < ApplicationController
    def index
       @categories = Challenge.select(:category).distinct 
       @current_challenge = Challenge.first
-      # if params.nil?
-      #    @current_challenge = Challenge.first
-      # else
-      #    @current_challenge = Challenge.find(params[:id])
-      # end
       puts @current_challenge.to_json
       puts params
 
@@ -16,6 +11,14 @@ class ChallengesController < ApplicationController
       @current_challenge = Challenge.find(params[:id])
       respond_to do |format|
          format.js
+      end
+   end
+   def check_flag
+      puts @current_challenge.to_json
+      @flag = params[:flag]
+      if @flag == Challenge.find(params[:id]).flag
+         
+         puts @flag
       end
    end
    def new
