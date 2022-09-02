@@ -27,8 +27,8 @@
                 <div class="owl-carousel-<%=category.category%> owl-carousel owl-theme">
                     <%  Challenge.where(:category => category.category).each do |challenge|%>
                         <div class="ms-2 me-2 p-4">
-                            <a data-remote="true" data-method="get" href="<%="challenges/#{challenge.id}"%>" style="color: black; text-decoration:none;">
-                                <div class="card" id="<%=challenge.id%>" solved="false"  data-bs-toggle="modal" data-bs-target="#myModal" href="challenges/show?id=<%=challenge.id%>">
+                            <a data-remote="true" data-method="get" href="<%="/challenges/#{challenge.id}"%>" style="color: black; text-decoration:none;">
+                                <div class="card" id="<%=challenge.id%>" solved="false" >
                                     <div class="card-body">
                                         <h5 class="card-title"><%=challenge.nome%></h5>
                                         <p class="card-text">
@@ -56,46 +56,38 @@
     <%= javascript_pack_tag "owl.js" %>
     <%= javascript_pack_tag "sfondo.js" %>
     <script>
+        
+
         window.addEventListener('load', (event) => {
+            
+            $('main').fadeIn(1500);
 
-        
-        $('main').fadeIn(1500);
-        //show_all_cards();
-        //show_done_challenge();
-
-        
-
-        $(document).ready(function () {
-            $('.owl-carousel').owlCarousel({
-                autoplay: true,
-                autoplayhoverpause: true,
-                autotimeout: 250,
-                loop: true,
-                margin: 0,
-                responsiveClass: true,
-                autoplayHoverPause: true,
-                responsive: {
-                    0: {
-                        items: 1,
-                        nav: true
-                    },
-                    992: {
-                        items: 2,
-                        nav: false
-                    },
-                    1200: {
-                        items: 3,
-                        nav: true,
-                        loop: true
+            $(document).ready(function () {
+                $('.owl-carousel').owlCarousel({
+                    autoplay: true,
+                    autoplayhoverpause: true,
+                    autotimeout: 250,
+                    loop: true,
+                    margin: 0,
+                    responsiveClass: true,
+                    autoplayHoverPause: true,
+                    responsive: {
+                        0: {
+                            items: 1,
+                            nav: true
+                        },
+                        992: {
+                            items: 2,
+                            nav: false
+                        },
+                        1200: {
+                            items: 3,
+                            nav: true,
+                            loop: true
+                        }
                     }
-                }
+                });
             });
-        });
-        document.getElementById("btn_flag").addEventListener('click', function (e) {
-             e.preventDefault();
-             check_flag($(this).attr("idd"));
-         })
-         centra_nav();
         });      
     </script>
     
