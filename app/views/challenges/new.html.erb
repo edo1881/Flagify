@@ -6,7 +6,7 @@
     <body>
         <h1 class="display-4 font-monospace fw-bold  mt-5 text-center" >Create Challenge</h1>
         <div class="row">
-            <div class="col-md-6 login-dark">
+            <div class="col-md-6 mt-4 login-dark">
                 <%= form_with(model: @challenge, class:"form",url: challenges_path,method: :post,:multipart => true) do |f|%>
                 <div><%= f.text_field :nome,class: "form-control", placeholder: "Title" %></div>
                 <div><%= f.text_field :category  ,class:"form-control", placeholder: "Category" %><br/></div>
@@ -14,20 +14,16 @@
                 <div><%= f.text_field :score ,class:"form-control", placeholder: "Score" %><br/></div>
                 <div><%= f.text_field :hint ,class:"form-control", placeholder: "Hint" %><br/></div>
                 <div><%= f.text_field :flag ,class:"form-control", placeholder: "Flag" %><br/></div>
-                
-                <!--<div class="field"><%= f.submit :submit,class:"form-control"%></div>-->
             </div>
             <div class="mt-5 col-md-5">
-	            <!--<%= form_with url: '/upload', :multipart => true do |f1| %> -->
                 <div class="form-group files">
                     <label>Upload Your File </label>
                     <%= f.file_field :upfile,class:"form-control",multiple:"" %>
                 </div>
-                <!--<%end%> -->
                 <div class="mt-3 ms-5 col-4" ><%= f.submit :Submit,class:"ms-5 btn btn-primary form-control"%></div>
             </div>
             
-            <%end%>      
+                <%end%>      
         </div>
 
     </body>

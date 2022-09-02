@@ -34,14 +34,14 @@ ActiveRecord::Schema.define(version: 2022_08_30_215029) do
   end
 
   create_table "user_challenges", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "challenge_id", null: false
+    t.integer "users_id", null: false
+    t.integer "challenges_id", null: false
     t.datetime "timestamp_flag"
     t.datetime "timestamp_hint"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["challenge_id"], name: "index_user_challenges_on_challenge_id"
-    t.index ["user_id"], name: "index_user_challenges_on_user_id"
+    t.index ["challenges_id"], name: "index_user_challenges_on_challenges_id"
+    t.index ["users_id"], name: "index_user_challenges_on_users_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,13 +54,13 @@ ActiveRecord::Schema.define(version: 2022_08_30_215029) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.integer "role"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "roles_mask", default: 0
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "user_challenges", "challenges"
-  add_foreign_key "user_challenges", "users"
+  add_foreign_key "user_challenges", "challenges", column: "challenges_id"
+  add_foreign_key "user_challenges", "users", column: "users_id"
 end
