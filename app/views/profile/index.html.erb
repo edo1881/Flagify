@@ -8,10 +8,9 @@
 
 <body>
     
-    <div class="container">
-        <div class="m-5 py-5 info_profilo" style="width: 100%;">
-            <div class="container row">
-                <div class="justify-content-center col">
+        <div class=" container mt-5 py-5 info_profilo" style="width: 100%;">
+            <div class="row">
+                <div class="justify-content-center col mt-3">
                     <title style="display: block;font-size: xx-large;">Info profilo</title>
                     <table class="table user-info table-dark table-striped table-bordered border-white">
                         <tbody class="scoreboard_table"></tbody>
@@ -19,10 +18,21 @@
                         <tr><td>Email</td><td><%= current_user.email %></td></li>
                     </table>
                 </div>
-                <button class="col" style="margin: 3rem;border-radius: 30px;background: lightpink;">Diventa un creator</button>
+                <div class="col"></div>
+                <div class="col text-center">
+                        <% if !current_user.avatar_url%> <div><img src="https://www.sony.it/presscentre/assets/resized/2021/05/contact-dummy_landscape_964x656.jpg"  class="rounded  figure-img" width="150" height="150" alt="your photo"></div>
+                        <% else%><div> <img src="<%=current_user.avatar_url %>" class="rounded  figure-img" width="150" height="150" alt="your photo"></div>
+                        <% end %>
+                    <figcaption class="text-center">  
+                        <div><strong ><h5> Role: <%= current_user.role%></h5></strong></div>
+                        <% if current_user.role=="player"%>
+                        <a href=<%= new_challenge_url %>><button  style="border-radius: 30px;background: lightpink;">Diventa un creator</button></a>
+                        <% end %>
+                    </figcaption>
+                </div>
             </div>
         </div>
-        <div class="m-5 py-5">
+        <div class="m-5">
             <div class="container">
                 <div class="justify-content-center">
                     <title style="display: block;font-size: xx-large;">Challenge completate</title>
@@ -65,7 +75,6 @@
             </div>
         </div>
         
-    </div>
 </body>
 <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" %>
 

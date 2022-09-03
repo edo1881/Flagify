@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Start Rails Server",
+      "type": "Ruby",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "program": "${workspaceFolder}/bin/rails",
+      "useBundler": true,
+      "pathToBundler": "${workspaceFolder}/bin/bundle",
+      "showDebuggerOutput": true,
+      "pathToRDebugIDE": "/${workspaceFolder}/bin/rdebug-ide",
+      "args": ["s"]
+    },
+    {
+      "name": "Run tests",
+      "type": "Ruby",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "program": "${workspaceFolder}/bin/rspec",
+      "useBundler": true,
+      "pathToBundler": "${workspaceFolder}/bin/bundle",
+      "showDebuggerOutput": true,
+      "pathToRDebugIDE": "/${workspaceFolder}/bin/rdebug-ide",
+      "args": []
+    }
+  ]
+}

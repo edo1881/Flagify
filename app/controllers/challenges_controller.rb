@@ -49,6 +49,7 @@ class ChallengesController < ApplicationController
       @challenge=Challenge.new(challenge_params.merge(:url_image => "#{filename}"))
       respond_to do |format|
          if @challenge.save
+           current_user.role="creator" if current_user.role=="player" 
            format.html { redirect_to challenges_url, notice: "Movie was successfully created." }
          else
            format.html { render :new, status: :unprocessable_entity }

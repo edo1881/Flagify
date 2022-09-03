@@ -10,6 +10,8 @@ gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection'
 gem 'net-smtp'
 gem 'google_drive'
+gem "font-awesome-rails"
+
 #gem 'jquery-turbolinks'
 #gem 'jquery-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'

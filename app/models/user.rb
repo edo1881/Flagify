@@ -12,11 +12,8 @@ class User < ApplicationRecord
   after_initialize :set_default_role,:if => :new_record?
   def set_default_role
     if ADMIN_LIST.include? self.email
-      self.role ||=:admin
-      self.roles_mask=2
+      self.role =:admin
       puts "NEW admin record added "
-    else
-      self.role||=:player
     end
   end
   
