@@ -10,8 +10,8 @@
     
     <div class="container">
         <div class="m-5 py-5 info_profilo" style="width: 100%;">
-            <div class="row">
-                <div class="justify-content-center col-sm-1">
+            <div class="container row">
+                <div class="justify-content-center col">
                     <title style="display: block;font-size: xx-large;">Info profilo</title>
                     <table class="table user-info table-dark table-striped table-bordered border-white">
                         <tbody class="scoreboard_table"></tbody>
@@ -19,15 +19,7 @@
                         <tr><td>Email</td><td><%= current_user.email %></td></li>
                     </table>
                 </div>
-               <div class="col">
-                    <img src="<%=current_user.avatar_url %>" class="rounded img-float figure-img float-left" width="200" height="175" style="position:absolute;top:23%;right: 20%;" alt="your photo">
-                    <div class="">Role: <%= current_user.role%></div>
-                    <% if current_user.role=="admin"%>
-                    <a href=<%= new_challenge_url %>><button  style="margin: 3rem;border-radius: 30px;position:absolute;right:20%;background: lightpink;">Diventa un creator</button></a>
-                    <% end %>
-                </div>
-            
-
+                <button class="col" style="margin: 3rem;border-radius: 30px;background: lightpink;">Diventa un creator</button>
             </div>
         </div>
         <div class="m-5 py-5">

@@ -1,26 +1,22 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
- #has_many :user_challenge
- # has_many :challenge, :through => :user_challenge 
-  ADMIN_LIST=["edo.gi00@hotmail.it","giuggioloni.1881780@studenti.uniroma1.it","dodothewall@gmail.com"]
+  has_many :user_challenge
+  has_many :challenge, :through => :user_challenge 
+
+  ADMIN_LIST=["edo.gi00@hotmail.it","giuggioloni.1881780@studenti.uniroma1.it"]
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
         :omniauthable, omniauth_providers: [:google_oauth2]
-  enum role: [:player, :creator, :admin]
+  enum role: [:player,:creator,:admin]
   after_initialize :set_default_role,:if => :new_record?
-
   def set_default_role
     if ADMIN_LIST.include? self.email
       self.role ||=:admin
+      self.roles_mask=2
       puts "NEW admin record added "
     else
-      self.role ||=:player
-      puts "NEw player record added"
+      self.role||=:player
     end
   end
   

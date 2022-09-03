@@ -1,11 +1,11 @@
 class ChallengesController < ApplicationController
    before_action :authenticate_user!
+   @current_challenge = nil
    def index
       @categories = Challenge.select(:category).distinct 
       @current_challenge = Challenge.first
       puts @current_challenge.to_json
       puts params
-
    end
    def show
       @current_challenge = Challenge.find(params[:id])
@@ -14,11 +14,16 @@ class ChallengesController < ApplicationController
       end
    end
    def check_flag
-      puts @current_challenge.to_json
+      puts "Check flag function"
       @flag = params[:flag]
+      @alert = 3
       if @flag == Challenge.find(params[:id]).flag
-         
-         puts @flag
+         @alert = 1 
+      else
+         @alert = 2
+      end
+      respond_to do |format|
+         format.js
       end
    end
    def new

@@ -31,17 +31,12 @@
 
                 <hr>
                 <span class="form-group d-flex ps-2 pe-2">
-                    <%= form_with model: @flag_response, url: "/challenges/check_flag?id=#{@current_challenge.id}", controller: "challenges", remote: true, action: "check_flag", method: :post do |form|%>
+                    <form style="display: contents;" action="/challenges/check_flag?id=<%=@current_challenge.id%>" accept-charset="UTF-8" method="post" data-remote="true">
                         <input class="form-control" id="flag_response" size="20" name="flag" placeholder="flag{...}" autocomplete="off" />
                         <button class="btn btn-info" id="btn_flag" type="submit">Send</button>
-
-                    <%end%>
-                    <%# <input class="form-control" id="flag_response" size="20" name="flag" placeholder="flag{...}" %>
-                        <%# autocomplete="off" /> %>
-                    <%# <button class="btn btn-info" id="btn_flag" idd="">Send</button> %>
+                    </form>
                 </span>
-                <%= render "check_flag" %>
-                
+                <div id="alerts"></div>                     
             </div>
 
             <div class="modal-footer">
