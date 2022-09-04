@@ -97,9 +97,15 @@
                                 <% current_user.challenges.each do |c|%>
                                     <tr>
                                         <th scope="col" class="text-left px-0" style="display: flex;"><%=c.nome%>
-                                            <div style="margin-left: auto;margin-right: 15px;">
-                                                <button>mod</button>
-                                                <button>el</button>
+                                            <div style="display:flex;margin-left: auto;"> 
+                                                <%= link_to edit_challenge_path(c),class: "btn btn-light" do %>
+                                                    <i class="bi bi-pen"></i>
+                                                <% end %>
+                                                 <%= link_to  "/challenges/#{c.id}",class: "btn btn-light",:method => :delete, data: { confirm: "Are you sure?" } do %>
+                                                    <i class="bi bi-trash"></i>
+                                                <% end %>
+                                                    
+                                               
                                             </div>
                                         </th>
                                     </tr>

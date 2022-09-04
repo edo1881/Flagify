@@ -1,5 +1,6 @@
 class ChallengesController < ApplicationController
    before_action :authenticate_user!
+   before_action :set_challenge, only: %i[ edit update destroy ]
    @current_challenge = nil
    def index
       @categories = Challenge.select(:category).distinct 
@@ -50,18 +51,42 @@ class ChallengesController < ApplicationController
       respond_to do |format|
          if @challenge.save
            current_user.role="creator" if current_user.role=="player" 
-           format.html { redirect_to challenges_url, notice: "Movie was successfully created." }
+           format.html { redirect_to challenges_url, notice: "Challenge was successfully created." }
          else
            format.html { render :new, status: :unprocessable_entity }
          end
       end
    end
-   def delete
+
+   def edit
+
    end
+
    def update
+      respond_to do |format|
+         if @challenge.update(challenge_params)
+           format.html { redirect_to challenge_url, notice: "Challenge was successfully updated." }
+         else 
+           format.html { render :edit, status: :unprocessable_entity }
+         end
+      end
    end
+
+   def destroy
+      @challenge.destroy
+
+      respond_to do |format|
+        format.html { redirect_to challenge_url, notice: "Challenge was successfully destroyed." }
+        format.json { head :no_content }
+      end
+   end
+
    private
+   def set_challenge
+      @challenge = Challenge.find(params[:id])
+    end
       def challenge_params
          params.require(:challenge).permit(:flag,:testo,:nome,:category,:score,:hint,:upfile,:url_image)
       end
+   
 end
