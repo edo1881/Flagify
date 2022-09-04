@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   has_many :challenges
+  has_many :solved_challenges, :through => :user_challenges
   ADMIN_LIST=["edo.gi00@hotmail.it","giuggioloni.1881780@studenti.uniroma1.it", "thomas.kirschner2901@gmail.com"]
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
