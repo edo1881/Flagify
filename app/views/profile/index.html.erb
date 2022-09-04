@@ -25,8 +25,10 @@
                         <% end %>
                     <figcaption class="text-center">  
                         <div><strong ><h5> Role: <%= current_user.role%></h5></strong></div>
-                        <% if current_user.role=="player"%>
-                        <a href=<%= new_challenge_url %>><button  style="border-radius: 30px;background: lightpink;">Diventa un creator</button></a>
+                        <% if current_user.role=="player" || current_user.role==nil %>
+                        <a href=<%= new_challenge_url %>><button  style="border-radius: 30px;background: lightpink;">Become a creator</button></a>
+                        <% elsif current_user.role=="creator" %>
+                        <a href=<%= new_challenge_url %>><button  style="border-radius: 30px;background: lightpink;">Become a player</button></a>
                         <% end %>
                     </figcaption>
                 </div>
@@ -74,22 +76,36 @@
                 </div>
             </div>
         </div>
+
+        <% if current_user.role == "creator" || current_user.role == "admin" %>
+            <div class="m-5 py-5">
+                <div class="container">
+                    <div class="justify-content-center">
+                        <% if current_user.role == "creator"%>
+                            <title style="display: block;font-size: xx-large;">Your Challenges</title>
+                        <% elsif current_user.role == "admin"%>
+                            <title style="display: block;font-size: xx-large;">Official Challenges</title>
+                        <% end%>
+                        
+                        <table class="table table_challenge_hint table-dark table-striped table-bordered border-white">
+                            <thead>
+                                <tr>
+                                    <th scope="col" class="text-left px-0" style="display: flex;">Challenge
+                                        <div style="margin-left: auto;margin-right: 15px;">
+                                            <button>mod</button>
+                                            <button>el</button>
+                                        </div>
+                                    </th>
+                                    </tr>
+                            </thead>
+                            <tbody class="scoreboard_table"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        <%end%>
         
 </body>
 <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" %>
-
-<script>
-    window.addEventListener('load', (event) => {
-        getNameBtn();
-        getStatisctics();
-        centra_nav();
-    });
-    window.addEventListener('resize', (event) => {
-            centra_nav();
-        });
-    function centra_nav(){
-        $('.navbar-brand').css('margin-right', ($('#btn_form').outerWidth() - $('.navbar-brand').outerWidth()).toString()+'px') ;
-    }
-</script>
 
 </html>
