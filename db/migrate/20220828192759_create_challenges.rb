@@ -9,7 +9,7 @@ class CreateChallenges < ActiveRecord::Migration[6.1]
       t.string :category
       t.string :hint
       t.integer :score
-
+      t.belongs_to :user
       t.timestamps
     end
   end

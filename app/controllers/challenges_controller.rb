@@ -46,7 +46,7 @@ class ChallengesController < ApplicationController
          upload(upfile)
          filename=upfile.original_filename
       end
-      @challenge=Challenge.new(challenge_params.merge(:url_image => "#{filename}"))
+      @challenge=Challenge.new(challenge_params.merge(:url_image => "#{filename}", :user_id => current_user.id))
       respond_to do |format|
          if @challenge.save
            current_user.role="creator" if current_user.role=="player" 
