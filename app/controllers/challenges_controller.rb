@@ -1,15 +1,13 @@
 class ChallengesController < ApplicationController
    before_action :authenticate_user!
    before_action :set_challenge, only: %i[ edit update destroy ]
-   @current_challenge = nil
    def index
       @categories = Challenge.select(:category).distinct 
-      @current_challenge = Challenge.first
-      puts @current_challenge.to_json
-      puts params
+      @challenge = Challenge.first
    end
    def show
-      @current_challenge = Challenge.find(params[:id])
+      @challenge = Challenge.find(params[:id])
+      @current_challenge = @challenge
       respond_to do |format|
          format.js
       end
@@ -74,9 +72,9 @@ class ChallengesController < ApplicationController
 
    def destroy
       @challenge.destroy
-
+      UserChallenge.where(:challenge_id => @challenge.id).delete_all
       respond_to do |format|
-        format.html { redirect_to challenge_url, notice: "Challenge was successfully destroyed." }
+        format.html { redirect_to profile_url, notice: "Challenge was successfully destroyed." }
         format.json { head :no_content }
       end
    end
@@ -85,8 +83,8 @@ class ChallengesController < ApplicationController
    def set_challenge
       @challenge = Challenge.find(params[:id])
     end
-      def challenge_params
-         params.require(:challenge).permit(:flag,:testo,:nome,:category,:score,:hint,:upfile,:url_image)
-      end
+   def challenge_params
+      params.require(:challenge).permit(:flag,:testo,:nome,:category,:score,:hint,:upfile,:url_image)
+   end
    
 end

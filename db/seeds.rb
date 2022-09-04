@@ -23,12 +23,3 @@ Challenge.create([  {id: 1, nome: "Challenge 1", testo: "Prova a risolvere quest
                     {id: 8, nome: "Challenge 8", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "Web", hint: "Scrivi flag", score: 100, user_id: 1},  
                     {id: 9, nome: "Challenge 9", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "Web", hint: "Scrivi flag", score: 100, user_id: 1},  
 ])
-
-UserChallenge.create! :id => 1, :flag_timestamp => "Sun, 04 Sep 2022 13:44:44.559994000 UTC +00:00", :user_id => 1, :challenge_id => 1
-UserChallenge.create! :id => 2, :flag_timestamp => "Sun, 04 Sep 2022 13:44:45.559994000 UTC +00:00", :user_id => 1, :challenge_id => 2
-UserChallenge.create! :id => 3, :flag_timestamp => "Sun, 04 Sep 2022 13:44:45.559994000 UTC +00:00", :user_id => 1, :challenge_id => 4
-UserChallenge.create! :id => 4, :flag_timestamp => "Sun, 04 Sep 2022 13:44:45.559994000 UTC +00:00", :user_id => 1, :challenge_id => 8
-UserChallenge.create! :id => 5, :flag_timestamp => "Sun, 04 Sep 2022 13:44:45.559994000 UTC +00:00", :user_id => 2, :challenge_id => 3
-UserChallenge.create! :id => 6, :flag_timestamp => "Sun, 04 Sep 2022 13:44:45.559994000 UTC +00:00", :user_id => 2, :challenge_id => 9
-UserChallenge.create! :id => 7, :flag_timestamp => "Sun, 04 Sep 2022 13:44:45.559994000 UTC +00:00", :user_id => 3, :challenge_id => 1
-UserChallenge.create! :id => 8, :flag_timestamp => "Sun, 04 Sep 2022 13:44:45.559994000 UTC +00:00", :user_id => 4, :challenge_id => 4
