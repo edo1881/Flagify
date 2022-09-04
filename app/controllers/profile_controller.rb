@@ -13,8 +13,5 @@ class ProfileController < ApplicationController
             @score += Challenge.find(a.challenge_id).score
         end
             
-        # done_challenges.each do |a|
-        #     Challenge.find(a.challenge_id)
-        # end
     end
 end
