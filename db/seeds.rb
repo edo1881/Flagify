@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
+
 Challenge.create([  {id: 1, nome: "Challenge 1", testo: "Prova a risolvere questa prima challenge", flag: "flag", category: "Intro", hint: "Scrivi flag", score: 100, user_id: 1}, 
                     {id: 2, nome: "Challenge 2", testo: "Prova a risolvere questa seconda challenge", flag: "flag", category: "Intro", hint: "Scrivi flag", score: 100, user_id: 1},
                     {id: 3, nome: "Challenge 3", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "Intro", hint: "Scrivi flag", score: 200, user_id: 1},  
