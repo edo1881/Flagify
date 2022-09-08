@@ -11,8 +11,7 @@ class ProfileController < ApplicationController
         @score = 0
         @done_challenges.each do |a|
             @score += Challenge.find(a.challenge_id).score
-        end
-            
+        end 
     end
 
 

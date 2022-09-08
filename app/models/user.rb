@@ -16,6 +16,9 @@ class User < ApplicationRecord
       self.role =:admin
       puts "NEW admin record added "
     end
+    if self.full_name.nil?
+      self.full_name = self.email.split('@')[0]
+    end
   end
   
   def self.from_omniauth(auth)
