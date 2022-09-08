@@ -25,10 +25,15 @@
             </div>
             <div class="container mt-3">
                 <div class="owl-carousel-<%=category.category%> owl-carousel owl-theme">
-                    <%  Challenge.where(:category => category.category).each do |challenge|%>
+                    <% Challenge.where(:category => category.category).each do |challenge|%>
+
                         <div class="ms-2 me-2 p-4">
                             <a data-remote="true" data-method="get" href="<%="/challenges/#{challenge.id}"%>" style="color: black; text-decoration:none;">
-                                <div class="card" id="<%=challenge.id%>" solved="false" >
+                                <% if UserChallenge.where(:user_id =>current_user.id, :challenge_id => challenge.id).where.not(:flag_timestamp => nil).count == 1%>
+                                    <div class="card" id="<%=challenge.id%>" solved="true" style="background: rgb(33, 210, 74);">
+                                <%else%>
+                                    <div class="card" id="<%=challenge.id%>" solved="false" >
+                                <%end%>
                                     <div class="card-body">
                                         <h5 class="card-title"><%=challenge.nome%></h5>
                                         <p class="card-text">

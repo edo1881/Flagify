@@ -14,7 +14,11 @@
                     <title style="display: block;font-size: xx-large;">Info profilo</title>
                     <table class="table user-info table-dark table-striped table-bordered border-white">
                         <tbody class="scoreboard_table"></tbody>
-                        <tr><td>Username</td><td><%= current_user.full_name %></td></li>
+                        <%if current_user.full_name.nil?%>
+                            <tr><td>Username</td><td><%= current_user.email.split('@')[0] %></td></li>
+                        <%else%>
+                            <tr><td>Username</td><td><%= current_user.full_name %></td></li>
+                        <%end%>
                         <tr><td>Email</td><td><%= current_user.email %></td></li>
                         <tr><td>Challenge points</td><td><%= @score %></td></li>
                         <tr><td>Hint used</td><td><%= @n_hint_used %></td></li>

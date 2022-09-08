@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create! :id => 1, :email => "a@a.it", :password => "12345678", :password_confirmation => "12345678", :role => "creator"
+User.create! :id => 1, :email => "admin@admin.it", :password => "12345678", :password_confirmation => "12345678"
 User.create! :id => 2, :email => "b@b.it", :password => "12345678", :password_confirmation => "12345678"
 User.create! :id => 3, :email => "c@c.it", :password => "12345678", :password_confirmation => "12345678"
 User.create! :id => 4, :email => "d@d.it", :password => "12345678", :password_confirmation => "12345678"
@@ -25,11 +25,11 @@ Challenge.create([  {id: 1, nome: "Challenge 1", testo: "Prova a risolvere quest
 ])
 
 
-UserChallenge.create! :id => 1, :flag_timestamp => "Sun, 04 Sep 2022 13:44:44.559994000 UTC +00:00", :user_id => 1, :challenge_id => 1
-UserChallenge.create! :id => 2, :flag_timestamp => "Sun, 04 Sep 2022 13:44:45.559994000 UTC +00:00", :user_id => 1, :challenge_id => 2
-UserChallenge.create! :id => 3, :flag_timestamp => "Sun, 04 Sep 2022 13:44:45.559994000 UTC +00:00", :user_id => 1, :challenge_id => 4
-UserChallenge.create! :id => 4, :flag_timestamp => "Sun, 04 Sep 2022 13:44:45.559994000 UTC +00:00", :user_id => 1, :challenge_id => 8
-UserChallenge.create! :id => 5, :flag_timestamp => "Sun, 04 Sep 2022 13:44:45.559994000 UTC +00:00", :user_id => 2, :challenge_id => 3
-UserChallenge.create! :id => 6, :flag_timestamp => "Sun, 04 Sep 2022 13:44:45.559994000 UTC +00:00", :user_id => 2, :challenge_id => 9
-UserChallenge.create! :id => 7, :flag_timestamp => "Sun, 04 Sep 2022 13:44:45.559994000 UTC +00:00", :user_id => 3, :challenge_id => 1
-UserChallenge.create! :id => 8, :flag_timestamp => "Sun, 04 Sep 2022 13:44:45.559994000 UTC +00:00", :user_id => 4, :challenge_id => 4
+UserChallenge.create! :id => 1, :flag_timestamp => "2022/09/08 16:30:27", :user_id => 1, :challenge_id => 1
+UserChallenge.create! :id => 2, :flag_timestamp => "2022/09/08 12:31:02", :user_id => 1, :challenge_id => 2
+UserChallenge.create! :id => 3, :flag_timestamp => "2022/08/02 18:24:42", :user_id => 1, :challenge_id => 4
+UserChallenge.create! :id => 4, :flag_timestamp => "2022/08/22 20:49:32", :user_id => 1, :challenge_id => 8
+UserChallenge.create! :id => 5, :flag_timestamp => "2022/08/01 13:28:15", :user_id => 2, :challenge_id => 3
+UserChallenge.create! :id => 6, :flag_timestamp => "2022/07/14 15:05:02", :user_id => 2, :challenge_id => 9
+UserChallenge.create! :id => 7, :flag_timestamp => "2022/07/27 17:39:57", :user_id => 3, :challenge_id => 1
+UserChallenge.create! :id => 8, :flag_timestamp => "2022/06/20 18:34:25", :user_id => 4, :challenge_id => 4

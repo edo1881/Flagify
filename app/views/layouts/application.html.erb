@@ -56,7 +56,7 @@
                   <% if not current_user.full_name.blank?%>
                     <%= current_user.full_name %>
                   <% else %>
-                    <%= current_user.email %>
+                    <%= current_user.email.split('@')[0] %>
                   <%end%>
                 </a>
                 <a href="<%= destroy_user_session_path%>" data-method="delete" class="btn btn-danger btn-sm rounded-pill ms-2" aria-labelledby="logout-popup">

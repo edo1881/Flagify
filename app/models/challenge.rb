@@ -1,4 +1,4 @@
 class Challenge < ApplicationRecord
     belongs_to :user
-    has_many   :user_challenges
+    has_many   :user_challenges, dependent: :delete_all
 end

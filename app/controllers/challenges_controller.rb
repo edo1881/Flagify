@@ -4,6 +4,7 @@ class ChallengesController < ApplicationController
    def index
       @categories = Challenge.select(:category).distinct 
       @challenge = Challenge.first
+      @done_challenges = UserChallenge.all.where(:user_id => current_user.id).where.not(:flag_timestamp => nil)
    end
    def show
       @challenge = Challenge.find(params[:id])
@@ -16,8 +17,21 @@ class ChallengesController < ApplicationController
       puts "Check flag function"
       @flag = params[:flag]
       @alert = 3
+      puts Time.now.utc.strftime("%Y/%m/%d %H:%M:%S")
       if @flag == Challenge.find(params[:id]).flag
-         @alert = 1 
+         if UserChallenge.where(:user_id =>current_user.id, :challenge_id => params[:id]).where.not(:flag_timestamp => nil).count == 1
+            @alert = 3
+         else
+            if UserChallenge.where(:user_id =>current_user.id, :challenge_id => params[:id]).count == 1
+               UserChallenge.where(:user_id =>current_user.id, :challenge_id => params[:id]).update(:flag_timestamp => Time.now.utc.strftime("%Y/%m/%d %H:%M:%S"))
+               puts "UserChallenge aggiornata con flag"
+            else
+               UserChallenge.create(:id => UserChallenge.last.id+1, :user_id =>current_user.id, :challenge_id => params[:id], :flag_timestamp => Time.now.utc.strftime("%Y/%m/%d %H:%M:%S"))
+               puts "UserChallenge creata con flag"
+            end
+            @alert = 1 
+
+         end
       else
          @alert = 2
       end

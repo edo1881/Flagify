@@ -3,9 +3,9 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   has_many :challenges
-  has_many :user_challenges
-  has_many :solved_challenges, :through => :user_challenges
-  ADMIN_LIST=["edo.gi00@hotmail.it","giuggioloni.1881780@studenti.uniroma1.it", "thomas.kirschner2901@gmail.com"]
+  has_many :user_challenges, dependent: :delete_all
+  has_many :solved_challenges, :through => :user_challenges, dependent: :delete_all
+  ADMIN_LIST=["edo.gi00@hotmail.it","giuggioloni.1881780@studenti.uniroma1.it", "thomas.kirschner2901@gmail.com", 'admin@admin.it']
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
         :omniauthable, omniauth_providers: [:google_oauth2]
