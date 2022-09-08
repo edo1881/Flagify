@@ -9,7 +9,7 @@
                 <%= form_with(model: @challenge, class:"form",url: challenges_path,method: :post,:multipart => true) do |f|%>
                 <div><%= f.text_field :nome,class: "form-control", placeholder: "Title" %></div>
                 <div><%= f.text_field :category  ,class:"form-control", placeholder: "Category" %><br/></div>
-                <div><%= f.text_area :testo  , placeholder: "Description",rows:"4",cols:"24" %><br/></div>
+                <div><%= f.text_area :testo  , placeholder: "Description",rows:"4",cols:"32 " %><br/></div>
                 <div><%= f.text_field :score ,class:"form-control", placeholder: "Score" %><br/></div>
                 <div><%= f.text_field :hint ,class:"form-control", placeholder: "Hint" %><br/></div>
                 <div><%= f.text_field :flag ,class:"form-control", placeholder: "Flag" %><br/></div>

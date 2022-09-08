@@ -7,7 +7,6 @@
 </head>
 
 <body>
-    
         <div class=" container mt-5 py-5 info_profilo" style="width: 100%;">
             <div class="row">
                 <div class="justify-content-center col mt-3">
@@ -20,10 +19,12 @@
                             <tr><td>Username</td><td><%= current_user.full_name %></td></li>
                         <%end%>
                         <tr><td>Email</td><td><%= current_user.email %></td></li>
-                        <tr><td>Challenge points</td><td><%= @score %></td></li>
-                        <tr><td>Hint used</td><td><%= @n_hint_used %></td></li>
-                        <tr><td>Total score</td><td><%= @score - 50*@n_hint_used %></td></li>
-                        <tr><td>Solved challenges</td><td><%= @n_challenge_done %></td></li>
+                        <% if current_user.role != "admin"%>
+                            <tr><td>Challenge points</td><td><%= @score %></td></li>
+                            <tr><td>Hint used</td><td><%= @n_hint_used %></td></li>
+                            <tr><td>Total score</td><td><%= @score - 50*@n_hint_used %></td></li>
+                            <tr><td>Solved challenges</td><td><%= @n_challenge_done %></td></li>
+                        <%end%>
                     </table>
                 </div>
                 <div class="col text-center" style="margin: auto;">
@@ -35,12 +36,13 @@
                         <% if current_user.role=="player" || current_user.role==nil %>
                         <a href=<%= new_challenge_url %>><button  style="border-radius: 30px;background: lightpink;">Become a creator</button></a>
                         <% elsif current_user.role=="creator" %>
-                        <a href=<%= new_challenge_url %>><button  style="border-radius: 30px;background: lightpink;">Become a player</button></a>
+                        <a href=<%=profile_become_player_path%>><button  style="border-radius: 30px;background: lightpink;">Become a player</button></a>
                         <% end %>
                     </figcaption>
                 </div>
             </div>
         </div>
+        <% if current_user.role != "admin"%>
         <div class="m-5">
             <div class="container">
                 <div class="justify-content-center">
@@ -67,6 +69,8 @@
                 </div>
             </div>
         </div>
+        <%end%>
+        <% if current_user.role != "admin"%>
         <div class="m-5 py-5">
             <div class="container">
                 <div class="justify-content-center">
@@ -93,7 +97,7 @@
                 </div>
             </div>
         </div>
-
+        <%end%>
         <% if current_user.role == "creator" || current_user.role == "admin"%>
             <div class="m-5 py-5">
                 <div class="container">
@@ -120,7 +124,7 @@
                             <tbody class="scoreboard_table">
                                 <% current_user.challenges.each do |c|%>
                                     <tr>
-                                        <th scope="col" class="text-left px-4"><%=c.nome%>   <i style="color: lightgray; font-size: large;"><%=c.testo.truncate(50, separator: ' ')%></i></th>
+                                        <th scope="col" class="text-left px-4" style="font-size: x-large;"><%=c.nome%>   <i style="color: lightgray; font-size: large;"><%=c.testo.truncate(50, separator: ' ')%></i></th>
                                         <th scope="col" class="text-center px-0" style="display: flex;">
                                             <div style="margin: auto;">
                                                 <%= link_to edit_challenge_path(c),class: "btn btn-light" do %> 
@@ -146,7 +150,6 @@
                 </div>
             </div>
         <%end%>
-        
 </body>
 
 <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" %>

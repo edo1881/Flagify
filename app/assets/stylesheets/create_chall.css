@@ -60,7 +60,7 @@
     color: inherit;
   }
   .login-dark form {
-    max-width: 320px;
+    max-width: 400px;
     width: 90%;
     background-color: #1e2833;
     padding: 40px;
@@ -87,4 +87,24 @@
     font-size: 16px;
     line-height: 1.8;
     color:#fff;
+  }
+
+  textarea{
+    background-color: rgb(30, 40, 51);
+    color: white;
+    border-width: 1px;
+    border-color: gray;
+  }
+
+  #challenge_upfile{
+    background-color: #1e2833;
+    color: white;
+    padding-left: 0px;
+  }
+  .ms-5{
+    margin: auto !important;
+    margin-top: 3rem !important;
+  }
+  .col-md-5{
+    margin-top: 6rem !important;
   }

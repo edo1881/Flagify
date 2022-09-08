@@ -5,6 +5,7 @@ class ChallengesController < ApplicationController
       @categories = Challenge.select(:category).distinct 
       @challenge = Challenge.first
       @done_challenges = UserChallenge.all.where(:user_id => current_user.id).where.not(:flag_timestamp => nil)
+      @admin_list = User.where(:role => "admin")
    end
    def show
       @challenge = Challenge.find(params[:id])
@@ -61,11 +62,14 @@ class ChallengesController < ApplicationController
       end
       @challenge=Challenge.new(challenge_params.merge(:url_image => "#{filename}", :user_id => current_user.id))
       respond_to do |format|
-         if @challenge.save
-           current_user.role="creator" if current_user.role=="player" 
-           format.html { redirect_to challenges_url, notice: "Challenge was successfully created." }
+         if @challenge.save 
+            if current_user.role=="player" 
+               current_user.role="creator" 
+               User.find(current_user.id).update(:role => "creator")
+            end
+            format.html { redirect_to challenges_url, notice: "Challenge was successfully created." }
          else
-           format.html { render :new, status: :unprocessable_entity }
+            format.html { render :new, status: :unprocessable_entity }
          end
       end
    end
@@ -73,6 +77,7 @@ class ChallengesController < ApplicationController
    def edit
 
    end
+
 
    def update
       respond_to do |format|
