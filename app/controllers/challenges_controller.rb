@@ -50,6 +50,7 @@ class ChallengesController < ApplicationController
       end
       GoogledriveController.new.googledrive if !$session
       $session.upload_from_file("./public/uploads/#{@filename}", "#{@filename}", convert: false)
+      File.delete("./public/uploads/#{@filename}")
    end
 
    def create
