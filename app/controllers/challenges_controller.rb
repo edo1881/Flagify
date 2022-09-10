@@ -2,7 +2,10 @@ class ChallengesController < ApplicationController
    before_action :authenticate_user!
    before_action :set_challenge, only: %i[ edit update destroy ]
    def index
-      @categories = Challenge.select(:category).distinct 
+      @categories_admin = Challenge.where(:user_id => User.where(:role => "admin")).select("category").distinct
+      @challenges_creator = Challenge.where.not(:user_id => User.where(:role => "admin")).all
+      @n_per_car = 4
+      @n_creator_chall = @challenges_creator.count/@n_per_car +1
       @challenge = Challenge.first
       @done_challenges = UserChallenge.all.where(:user_id => current_user.id).where.not(:flag_timestamp => nil)
       @admin_list = User.where(:role => "admin")
@@ -87,7 +90,7 @@ class ChallengesController < ApplicationController
 
    def update
       respond_to do |format|
-         if @challenge.update(challenge_params)
+         if @challenge.update(challenge_params.merge(:url_image => params[:challenge][:upfile][0].original_filename))
            format.html { redirect_to challenges_url, notice: "Challenge was successfully updated." }
          else 
            format.html { render :edit, status: :unprocessable_entity }
