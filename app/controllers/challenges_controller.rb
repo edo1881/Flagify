@@ -83,7 +83,7 @@ class ChallengesController < ApplicationController
    def update
       respond_to do |format|
          if @challenge.update(challenge_params)
-           format.html { redirect_to challenge_url, notice: "Challenge was successfully updated." }
+           format.html { redirect_to challenges_url, notice: "Challenge was successfully updated." }
          else 
            format.html { render :edit, status: :unprocessable_entity }
          end
