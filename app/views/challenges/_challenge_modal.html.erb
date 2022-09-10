@@ -24,9 +24,12 @@
                 <p id="text" class="text-center">
                     <%=@current_challenge.testo%></p>
                 <hr>
-                <div> <h5 class="text-left">Files</h5>
-                      @current_challenge.url_image
-                <hr>
+                <% if @file %> 
+                    <div> <h5 class="text-left">Files</h5>
+                      <%= link_to "#{@current_challenge.url_image}",@file.web_content_link,class: "btn btn-info" %>
+                    </div>
+                    <hr>
+                <% end%>
                 <div class="hint-div">
                     <h5 class="text-left"> Hint</h5>
                         <button type="button" class="mt-3 btn btn-danger" id="hint_btn" onclick="show_modal_hint()"> <svg

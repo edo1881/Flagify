@@ -10,6 +10,11 @@ class ChallengesController < ApplicationController
    def show
       @challenge = Challenge.find(params[:id])
       @current_challenge = @challenge
+      if @current_challenge.url_image
+         @filename=@current_challenge.url_image
+         GoogledriveController.new.googledrive if !$session
+         @file = $session.file_by_title(@filename)
+      end 
       respond_to do |format|
          format.js
       end
@@ -49,7 +54,7 @@ class ChallengesController < ApplicationController
         file.write(uploaded_file.read)
       end
       GoogledriveController.new.googledrive if !$session
-      $session.upload_from_file("./public/uploads/#{@filename}", "#{@filename}", convert: false)
+      $session.upload_from_file("./public/uploads/#{@filename}", @filename, convert: false)
       File.delete("./public/uploads/#{@filename}")
    end
 
@@ -83,7 +88,7 @@ class ChallengesController < ApplicationController
    def update
       respond_to do |format|
          if @challenge.update(challenge_params)
-           format.html { redirect_to challenge_url, notice: "Challenge was successfully updated." }
+           format.html { redirect_to challenges_url, notice: "Challenge was successfully updated." }
          else 
            format.html { render :edit, status: :unprocessable_entity }
          end
