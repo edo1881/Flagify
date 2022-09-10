@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create! :id => 1, :email => "admin@admin.it", :password => "12345678", :password_confirmation => "12345678"
-User.create! :id => 2, :email => "b@b.it", :password => "12345678", :password_confirmation => "12345678"
-User.create! :id => 3, :email => "c@c.it", :password => "12345678", :password_confirmation => "12345678"
-User.create! :id => 4, :email => "d@d.it", :password => "12345678", :password_confirmation => "12345678"
-User.create! :id => 5, :email => "e@e.it", :password => "12345678", :password_confirmation => "12345678"
+User.create! :id => 2, :email => "b@b.it", :password => "12345678", :password_confirmation => "12345678", :role => "creator"
+User.create! :id => 3, :email => "creator@c.it", :password => "12345678", :password_confirmation => "12345678"
+User.create! :id => 4, :email => "david@d.it", :password => "12345678", :password_confirmation => "12345678"
+User.create! :id => 5, :email => "eieieiei@e.it", :password => "12345678", :password_confirmation => "12345678"
 
 
 Challenge.create([  {id: 1, nome: "How to start", testo: "In questa serie di sfide, chiamate challenge, verranno introdotti alcuni concetti fondamentali riguardo alle competizioni Capture The Flag (CTF), in particolare del formato jeopardy. In ogni challenge ti verrà richiesto di trovare un''informazione segreta chiamata flag, sfruttando le vulnerabilità presenti all''interno della sfida. Trovando ed inviando la flag alla piattaforma otterrai dei punti in base alla difficoltà della sfida che ti farà salire in classifica. \nPer questa primissima challenge invia questa flag nel campo qua sotto: \nflag{My_f1R57_54Ni7Y_ch3Ck}", flag: "flag{My_f1R57_54Ni7Y_ch3Ck}", category: "Intro", hint: "Scrivi flag{My_f1R57_54Ni7Y_ch3Ck}", score: 100, user_id: 1}, 
@@ -22,6 +22,16 @@ Challenge.create([  {id: 1, nome: "How to start", testo: "In questa serie di sfi
                     {id: 7, nome: "Python reverse", testo: "Il '<a href=\"#\" download=\"\" target=\"_blank\">file</a> è stato cifrato con <a href=\"\" download=\"encrypt.py\" target=\"_blank\">'questo</a>  file, riuscirai a defifrarlo?", flag: "flag{but_1_th0ught_Dlog_wa5_h4rd}", category: "Reverse Engineering", hint: "La chiave di cifratura va tra 0 e 255, ma ricorda che la flag ha sempre lo stesso formato ;)", score: 200, user_id: 1},  
                     {id: 8, nome: "Challenge 8", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "Web", hint: "Scrivi flag", score: 100, user_id: 1},  
                     {id: 9, nome: "Challenge 9", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "Web", hint: "Scrivi flag", score: 100, user_id: 1},  
+                    {id: 10, nome: "Creator 10", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "a", hint: "Scrivi flag", score: 100, user_id: 2},  
+                    {id: 11, nome: "Creator 11", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "a", hint: "Scrivi flag", score: 100, user_id: 2},  
+                    {id: 12, nome: "Creator 12", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "a", hint: "Scrivi flag", score: 100, user_id: 2},  
+                    {id: 13, nome: "Creator 13", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "a", hint: "Scrivi flag", score: 100, user_id: 2},  
+                    {id: 14, nome: "Creator 14", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "a", hint: "Scrivi flag", score: 100, user_id: 2},  
+                    {id: 15, nome: "Creator 15", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "a", hint: "Scrivi flag", score: 100, user_id: 2},  
+                    {id: 16, nome: "Creator 16", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "a", hint: "Scrivi flag", score: 100, user_id: 2},  
+                    {id: 17, nome: "Creator 17", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "a", hint: "Scrivi flag", score: 100, user_id: 2},  
+                    {id: 18, nome: "Creator 18", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "a", hint: "Scrivi flag", score: 100, user_id: 2},  
+                    {id: 19, nome: "Creator 19", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "a", hint: "Scrivi flag", score: 100, user_id: 2},  
 ])
 
 

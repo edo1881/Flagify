@@ -6,19 +6,21 @@
         <div class="modal-content">
             <div class="modal-header text-center">
                 <h5 class="modal-title" id="title" style="padding-right: 10px;"><%=@current_challenge.nome%></h5>
-                <% if !@current_challenge.user.full_name.nil?%>
-                    <div style="margin-right: auto;color: #878787;"><%=@current_challenge.user.full_name%></div>
-                <% elsif User.where(:role => "admin").where(:id => @current_challenge.user.id).exists?%>
+                <% if User.where(:role => "admin").where(:id => @current_challenge.user.id).exists?%>
                     <div style="margin-right: auto;color: #878787;">Official</div>
                 <% else %>
-                    <div style="margin-right: auto;color: #878787;"><%=@current_challenge.user.email%></div>
+                    <div style="margin-right: auto;color: #878787;"><%=@current_challenge.user.full_name%></div>
                 <%end%>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
             <div class="modal-body">
                 <div class="score-div">
-                    <h5 class="text-left"> Score: 100<span id="score" class="badge bg-danger"></span></h5> 
+                    <% if User.where(:role => "admin").where(:id => @current_challenge.user.id).exists?%>
+                        <h5 class="text-left"> Score: <%=@current_challenge.score%><span id="score" class="badge bg-danger"></span></h5> 
+                    <% else %>
+                        <h5 class="text-left"> Category: <%=@current_challenge.category%><span id="score" class="badge bg-danger"></span></h5> 
+                    <% end %>
                 </div>
                 <hr>
                 <p id="text" class="text-center">
