@@ -14,6 +14,7 @@ class ChallengesController < ApplicationController
          @filename=@current_challenge.url_image
          GoogledriveController.new.googledrive if !$session
          @file = $session.file_by_title(@filename)
+         @file.acl.push({type: "anyone", allow_file_discovery: false, role: "reader"})
       end 
       respond_to do |format|
          format.js
