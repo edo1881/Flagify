@@ -14,10 +14,15 @@ class ChallengesController < ApplicationController
       @challenge = Challenge.find(params[:id])
       @current_challenge = @challenge
       if @current_challenge.url_image
-         @filename=@current_challenge.url_image
          GoogledriveController.new.googledrive if !$session
-         @file = $session.file_by_title(@filename)
-         @file.acl.push({type: "anyone", allow_file_discovery: false, role: "reader"})
+         @names=@current_challenge.url_image.split('+')
+         @file_list=[]
+         @names.each do |f|
+            puts "FILENAME:  #{f} "
+            @file = $session.file_by_title(f)
+            @file_list.push(@file)
+            @file.acl.push({type: "anyone", allow_file_discovery: false, role: "reader"})
+         end
       end 
       respond_to do |format|
          format.js
@@ -52,25 +57,31 @@ class ChallengesController < ApplicationController
    def new
       @challenge=Challenge.new
    end
-   def upload(uploaded_file)
-      @filename= uploaded_file.original_filename
-      File.open(Rails.root.join('public', 'uploads', @filename), 'wb') do |file|
-        file.write(uploaded_file.read)
-      end
+   def upload(file_list)
       GoogledriveController.new.googledrive if !$session
-      $session.upload_from_file("./public/uploads/#{@filename}", @filename, convert: false)
-      File.delete("./public/uploads/#{@filename}")
+      file_list.each do |f|
+         @filename= f.original_filename
+         File.open(Rails.root.join('public', 'uploads', @filename), 'wb') do |file|
+           file.write(f.read)
+         end
+         $session.upload_from_file("./public/uploads/#{@filename}", @filename, convert: false)
+         puts "FILE UPLOADED: #{@filename}"
+         File.delete("./public/uploads/#{@filename}")
+      end     
    end
 
    def create
-      filename=""
-      if params[:challenge][:upfile]
-         upfile=params[:challenge][:upfile][0]
-         puts "ecco upfile #{upfile}"
-         upload(upfile)
-         filename=upfile.original_filename
+      @names=""
+      @file_list=params[:challenge][:upfile]
+      puts "FILE LIST : #{@file_list}"
+      if @file_list
+         upload(@file_list)
+         @file_list.each do |f|
+            @names.concat(f.original_filename)
+            @names.concat('+')
+         end
       end
-      @challenge=Challenge.new(challenge_params.merge(:url_image => "#{filename}", :user_id => current_user.id))
+      @challenge=Challenge.new(challenge_params.merge(:url_image => @names, :user_id => current_user.id))
       respond_to do |format|
          if @challenge.save 
             if current_user.role=="player" 
@@ -90,8 +101,14 @@ class ChallengesController < ApplicationController
 
 
    def update
+      @names=""
+      @file_list=params[:challenge][:upfile]
+      @file_list.each do |f|
+         @names.concat(f.original_filename)
+         @names.concat('+')
+      end
       respond_to do |format|
-         if @challenge.update(challenge_params.merge(:url_image => params[:challenge][:upfile][0].original_filename))
+         if @challenge.update(challenge_params.merge(:url_image => @names))
            format.html { redirect_to challenges_url, notice: "Challenge was successfully updated." }
          else 
            format.html { render :edit, status: :unprocessable_entity }
@@ -100,6 +117,12 @@ class ChallengesController < ApplicationController
    end
 
    def destroy
+      GoogledriveController.new.googledrive if !$session
+      @names=@challenge.url_image.split('+')
+      @names.each do |f|
+         @file=$session.file_by_title(f)
+         @file.delete(permanent=false)
+      end
       @challenge.destroy
       UserChallenge.where(:challenge_id => @challenge.id).delete_all
       respond_to do |format|

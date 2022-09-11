@@ -26,9 +26,11 @@
                 <p id="text" class="text-center">
                     <%=@current_challenge.testo%></p>
                 <hr>
-                <% if @file %> 
-                    <div> <h5 class="text-left">Files</h5>
-                      <%= link_to "#{@current_challenge.url_image}",@file.web_content_link,class: "btn btn-info" %>
+                <% if @current_challenge.url_image %> 
+                    <div><h5 class="text-left">Files</h5>
+                      <% @file_list.each do |f| %>
+                        <%= link_to f.original_filename,f.web_content_link,class: "btn btn-info" %>
+                    <% end %>
                     </div>
                     <hr>
                 <% end%>

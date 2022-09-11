@@ -22,7 +22,7 @@
 	            <!--<%= form_with url: '/upload', :multipart => true do |f1| %> -->
                 <div class="form-group files">
                     <label>Upload Your File </label>
-                    <%= f.file_field :upfile,class:"form-control",multiple:"" %>
+                    <%= f.file_field :upfile,class:"form-control",multiple: true %>
                 </div>
                 <!--<%end%> -->
                 <div class="mt-3 ms-5 col-4" ><%= f.submit :Submit,class:"ms-5 btn btn-primary form-control"%></div>
