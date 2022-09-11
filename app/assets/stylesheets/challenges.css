@@ -163,3 +163,12 @@ a:hover{
 .owl-nav{
     display: none;
 }
+.colored_a{
+    color: rgb(255, 120, 255);
+    text-decoration: none;
+}
+
+.colored_a:hover{
+    color: rgb(255, 0, 255);
+    font-weight: bold;
+}

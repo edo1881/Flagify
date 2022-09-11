@@ -44,7 +44,7 @@
                             <tr>
                                 <td class='text-center'><%= pos+1 %></td>
                                     <td class='text-center'><%= user.tot_score %></td>
-                                    <td class='text-center'><a href="/users/show/<%=user.user_id%>">
+                                    <td class='text-center'><a href="/users/<%=user.user_id%>">
                                     <%= "#{User.find(user.user_id).full_name}" %></a>
                                 </tr>
                         <% end %>
@@ -54,6 +54,7 @@
 
             </div>
         </div>
+
     </div>
     <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" %>
 
