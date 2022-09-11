@@ -36,7 +36,7 @@
                         <% if current_user.role=="player" || current_user.role==nil %>
                         <a href=<%= new_challenge_url %>><button  style="border-radius: 30px;background: lightpink;">Become a creator</button></a>
                         <% elsif current_user.role=="creator" %>
-                        <a href=<%=profile_become_player_path%> data-confirm="If you become a player,all your challenges will be eliminated. Are you sure?"><button  style="border-radius: 30px;background: lightpink;" >Become a player</button></a>
+                        <a href=<%=users_become_player_path%> data-confirm="If you become a player,all your challenges will be eliminated. Are you sure?"><button  style="border-radius: 30px;background: lightpink;" >Become a player</button></a>
                         <% end %>
                     </figcaption>
                 </div>
