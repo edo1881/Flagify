@@ -54,6 +54,11 @@ class ChallengesController < ApplicationController
          format.js
       end
    end
+   def show_hint
+      respond_to do |format|
+         format.js
+      end
+   end
    def new
       @challenge=Challenge.new
    end
