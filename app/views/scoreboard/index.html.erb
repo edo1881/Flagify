@@ -44,8 +44,8 @@
                             <tr>
                                 <td class='text-center'>1</td>
                                     <td class='text-center'>1</td>
-                                    <td class='text-center'><a href="/profile?id=<%=user.id%>">
-                                    <%= user.full_name %>
+                                    <td class='text-center'><a href="/profile/<%=user.id%>">
+                                    <%= user.full_name %></a>
                                 </tr>
                         <% end %>
                     </tbody>
@@ -60,7 +60,6 @@
     
     <script>
         window.addEventListener('load', (event) => {
-            getNameBtn();
             centra_nav();
         });
         window.addEventListener('resize', (event) => {
