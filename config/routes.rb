@@ -12,5 +12,5 @@ Rails.application.routes.draw do
  # get '/profile', to: 'profile#index'
   post '/challenges/check_flag', to: 'challenges#check_flag'
   get '/challenges/show_hint/:id', to: 'challenges#show_hint'
-  
+  post '/category_filter', to: 'scoreboard#index'
 end

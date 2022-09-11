@@ -9,23 +9,26 @@
     <div class="mt-5 container">
         <div class="pt-5 justify-content-center row">
             <div class="col-lg-3 m-3 col-8">
-                <select class="form-select">
-                    <option value="-1">All categories</option>
+            <%= form_with(url:"/category_filter",method: :post) do |f|%>
+                <select class="form-select" name="categories">
+                    <option value="-1"><%= @category%></option>
                     <%Challenge.select("category").distinct.each do |c|%>
                         <option value="<%=c.category%>"><%=c.category%></option>
+                        
                     <%end%>
+                     <% if @category!="All Categories"%><option value="All Categories">All Categories</option><%end%>
                 </select>
             </div>
             <div class="col-lg-3 m-3 col-8">
-                <button class="btn btn-warning w-100" onclick="order_by_category()">
+                <%= f.submit :filter,class:"btn btn-warning w-100" do%>
                     <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="filter"
                      class="svg-inline--fa fa-filter fa-w-16 fa-fw " role="img" style="height:24px;" xmlns="http://www.w3.org/2000/svg" 
                      viewBox="0 0 512 512"><path fill="currentColor" d="M487.976 0H24.028C2.71 0-8.047 25.866 7.058 
                      40.971L192 225.941V432c0 7.831 3.821 15.17 10.237 19.662l80 55.98C298.02 518.69 320 507.493 
                      320 487.98V225.941l184.947-184.97C520.021 25.896 509.338 0 487.976 0z"></path></svg>
-                     Filter
-                </button>
+                <%end%>
             </div>
+        <%end%>
         </div>
     </div>
     <div class="m-5 py-5">
