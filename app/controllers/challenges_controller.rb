@@ -45,7 +45,6 @@ class ChallengesController < ApplicationController
                puts "UserChallenge creata con flag"
             end
             @alert = 1 
-
          end
       else
          @alert = 2
@@ -55,8 +54,22 @@ class ChallengesController < ApplicationController
       end
    end
    def show_hint
+      @current_challenge = Challenge.find(params[:id])
       respond_to do |format|
          format.js
+      end
+   end
+
+   def confirm_hint
+      puts "CONFIRM HINT"
+      @current_challenge = Challenge.find(params[:id])
+      if UserChallenge.where(:user_id => current_user.id, :challenge_id => @current_challenge.id).exists?
+         UserChallenge.where(:user_id => current_user.id, :challenge_id => @current_challenge.id).update(:hint_timestamp => Time.now.utc.strftime("%Y/%m/%d %H:%M:%S"))
+      else
+         UserChallenge.create(:id => UserChallenge.last.id+1, :user_id => current_user.id, :challenge_id => @current_challenge.id, :hint_timestamp => Time.now.utc.strftime("%Y/%m/%d %H:%M:%S"))
+      end
+      respond_to do |format|
+         format.js 
       end
    end
    def new
