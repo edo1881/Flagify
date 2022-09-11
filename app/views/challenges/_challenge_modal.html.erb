@@ -9,7 +9,7 @@
                 <% if User.where(:role => "admin").where(:id => @current_challenge.user.id).exists?%>
                     <div style="margin-right: auto;color: #878787;">Official</div>
                 <% else %>
-                    <div style="margin-right: auto;color: #878787;"><%=@current_challenge.user.full_name%></div>
+                    <div style="margin-right: auto;color: #878787;"><a class="colored_a" href="/users/<%=@current_challenge.user.id%>"><%=@current_challenge.user.full_name%></a></div>
                 <%end%>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>

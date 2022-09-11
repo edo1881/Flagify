@@ -6,9 +6,9 @@ class UsersController < ApplicationController
     
  
     def show
-        @user = User.all
-        @done_challenges = UserChallenge.all.where(:user_id => current_user.id).where.not(:flag_timestamp => nil)
-        @hint_challenges = UserChallenge.all.where(:user_id => current_user.id).where.not(:hint_timestamp => nil)
+        @user = User.find(params[:id])
+        @done_challenges = UserChallenge.all.where(:user_id => @user.id).where.not(:flag_timestamp => nil)
+        @hint_challenges = UserChallenge.all.where(:user_id => @user.id).where.not(:hint_timestamp => nil)
 
         @n_challenge_done = @done_challenges.count
         @n_hint_used = 0
