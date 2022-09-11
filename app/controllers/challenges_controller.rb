@@ -121,9 +121,11 @@ class ChallengesController < ApplicationController
    def update
       @names=""
       @file_list=params[:challenge][:upfile]
-      @file_list.each do |f|
-         @names.concat(f.original_filename)
-         @names.concat('+')
+      if !@file_list.nil? &&@file_list.length() > 1
+         @file_list.each do |f|
+            @names.concat(f.original_filename)
+            @names.concat('+')
+         end
       end
       respond_to do |format|
          if @challenge.update(challenge_params.merge(:url_image => @names))
@@ -136,16 +138,17 @@ class ChallengesController < ApplicationController
 
    def destroy
       GoogledriveController.new.googledrive if !$session
-      @names=@challenge.url_image.split('+')
-      @names.each do |f|
-         @file=$session.file_by_title(f)
-         @file.delete(permanent=false)
+      if !@challenge.url_image.nil?
+         @names=@challenge.url_image.split('+')
+         @names.each do |f|
+            @file=$session.file_by_title(f)
+            @file.delete(permanent=false)
+         end
       end
       @challenge.destroy
       UserChallenge.where(:challenge_id => @challenge.id).delete_all
       respond_to do |format|
-        format.html { redirect_to profile_url, notice: "Challenge was successfully destroyed." }
-        format.json { head :no_content }
+        format.html { redirect_to "/users/#{current_user.id}", notice: "Challenge was successfully destroyed." }
       end
    end
 

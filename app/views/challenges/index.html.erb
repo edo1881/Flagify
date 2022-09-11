@@ -49,38 +49,39 @@
                 </div>
             </div>
         <%end%>
-        
-        <div class="text-center mt-5">
-            <h1>Creator Challenge</h1>
-        </div>
-        
-        <% @n_creator_chall.times do |i|%>
-            <div class="container mt-3">
-                <div class="owl-carousel-creator owl-carousel owl-theme">
-                    <% @challenges_creator.each_with_index do |challenge, idx|%>
-                        <% if idx > i*@n_per_car && idx <= (i+1)*@n_per_car%>
-                            <div class="ms-2 me-2 p-4">
-                                <a data-remote="true" data-method="get" href="<%="/challenges/#{challenge.id}"%>" style="color: black; text-decoration:none;">
-                                    <% if UserChallenge.where(:user_id =>current_user.id, :challenge_id => challenge.id).where.not(:flag_timestamp => nil).count == 1%>
-                                        <div class="card" id="<%=challenge.id%>" solved="true" style="background: rgb(33, 210, 74);">
-                                    <%else%>
-                                        <div class="card" id="<%=challenge.id%>" solved="false" >
-                                    <%end%>
-                                        <div class="card-body">
-                                            <h5 class="card-title"><%=challenge.nome%></h5>
-                                            <p class="card-text">
-                                            
-                                            Creator: <%=User.find(challenge.user_id).full_name%>
-                                            
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        <%end%>
-                    <%end%>
-                </div>
+        <% if Challenge.where(:user_id => User.where(:role => "creator")).count > 0%>
+            <div class="text-center mt-5">
+                <h1>Creator Challenge</h1>
             </div>
+            
+            <% @n_creator_chall.times do |i|%>
+                <div class="container mt-3">
+                    <div class="owl-carousel-creator owl-carousel owl-theme">
+                        <% @challenges_creator.each_with_index do |challenge, idx|%>
+                            <% if idx >= i*@n_per_car && idx < (i+1)*@n_per_car%>
+                                <div class="ms-2 me-2 p-4">
+                                    <a data-remote="true" data-method="get" href="<%="/challenges/#{challenge.id}"%>" style="color: black; text-decoration:none;">
+                                        <% if UserChallenge.where(:user_id =>current_user.id, :challenge_id => challenge.id).where.not(:flag_timestamp => nil).count == 1%>
+                                            <div class="card" id="<%=challenge.id%>" solved="true" style="background: rgb(33, 210, 74);">
+                                        <%else%>
+                                            <div class="card" id="<%=challenge.id%>" solved="false" >
+                                        <%end%>
+                                            <div class="card-body">
+                                                <h5 class="card-title"><%=challenge.nome%></h5>
+                                                <p class="card-text">
+                                                
+                                                Creator: <%=User.find(challenge.user_id).full_name%>
+                                                
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            <%end%>
+                        <%end%>
+                    </div>
+                </div>
+            <%end%>
         <%end%>
     </div>
 

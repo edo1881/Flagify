@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 'home#index'
   get '/challenges/:id/delete', to: 'challenges#destroy'
   get '/users/become_player', to: 'users#become_player'
+  get '/users/delete_user/:id', to: 'users#delete_user'
   post '/send_email',to: 'contactform#create' 
   get '/scoreboard', to: 'scoreboard#index'
  # get '/profile', to: 'profile#index'

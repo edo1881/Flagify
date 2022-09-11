@@ -25,7 +25,7 @@ Challenge.create([  {id: 1, nome: "How to start", testo: "In questa serie di sfi
                     {id: 10, nome: "Creator 10", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "a", hint: "Scrivi flag", score: 100, user_id: 2},  
                     {id: 11, nome: "Creator 11", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "a", hint: "Scrivi flag", score: 100, user_id: 2},  
                     {id: 12, nome: "Creator 12", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "a", hint: "Scrivi flag", score: 100, user_id: 2},  
-                    {id: 13, nome: "Creator 13", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "a", hint: "Scrivi flag", score: 100, user_id: 2},  
+                    {id: 13, nome: "Creator 13", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "a", hint: "Scrivi flag", score: 100, user_id: 9},  
                     {id: 14, nome: "Creator 14", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "a", hint: "Scrivi flag", score: 100, user_id: 2},  
                     {id: 15, nome: "Creator 15", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "a", hint: "Scrivi flag", score: 100, user_id: 2},  
                     {id: 16, nome: "Creator 16", testo: "Prova a risolvere questa terza challenge", flag: "flag", category: "a", hint: "Scrivi flag", score: 100, user_id: 2},  

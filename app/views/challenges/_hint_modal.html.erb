@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header text-center">
-                <%if UserChallenge.where(:user_id => current_user.id, :challenge_id => @current_challenge.id).exists? || !User.where(:role => "admin").where(:id => @current_challenge.user.id).exists?%>
+                <%if UserChallenge.where(:user_id => current_user.id, :challenge_id => @current_challenge.id).exists? || !User.where(:role => "admin").where(:id => @current_challenge.user.id).exists? || current_user.role=="admin"%>
                     <h5 class="modal-title hint-title" id="title" style="padding-right: 10px;">Hint</h5>
                 <%else%>
                     <h5 class="modal-title hint-title" id="title" style="padding-right: 10px;">Unlock Hint</h5>
@@ -11,12 +11,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <%if UserChallenge.where(:user_id => current_user.id, :challenge_id => @current_challenge.id).exists? || !User.where(:role => "admin").where(:id => @current_challenge.user.id).exists?%>
+                <%if UserChallenge.where(:user_id => current_user.id, :challenge_id => @current_challenge.id).exists? || !User.where(:role => "admin").where(:id => @current_challenge.user.id).exists? || current_user.role=="admin"%>
                     <div class="p-3 hint-body"><%=@current_challenge.hint%></div>
                 <%else%>
                     <div class="p-3 hint-body" id="hint-text">Do you really want to unlock the hint?</div>
                 <%end%>
-                
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close"><svg aria-hidden="true"
@@ -28,7 +27,7 @@
                     </path>
                     </svg> Close
                 </button>
-                <%if !UserChallenge.where(:user_id => current_user.id, :challenge_id => @current_challenge.id).exists? && User.where(:role => "admin").where(:id => @current_challenge.user.id).exists?%>
+                <%if !UserChallenge.where(:user_id => current_user.id, :challenge_id => @current_challenge.id).exists? && User.where(:role => "admin").where(:id => @current_challenge.user.id).exists? && current_user.role!="admin"%>
                 <form style="display: contents;" action="/challenges/confirm_hint?id=<%=@current_challenge.id%>" accept-charset="UTF-8" method="post" data-remote="true">
                     <button class="btn btn-success btn-success-hint"  type="submit"><svg aria-hidden="true"
                         focusable="false" data-prefix="fas" data-icon="check"

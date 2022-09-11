@@ -43,7 +43,7 @@
                             <% end %>
                         <%end%>
                         <% if current_user==@user || current_user.role =="admin"%>
-                            <a href="#" data-confirm="Do you really want to delete your account?"><button style="border-radius: 30px;background: rgb(187, 45, 59);border-width: 1px;width: 150px;">Delete account</button></a>                    </figcaption>
+                            <a href="/users/delete_user/<%=current_user.id%>" data-confirm="Do you really want to delete your account?"><button style="border-radius: 30px;background: rgb(187, 45, 59);border-width: 1px;width: 150px;">Delete account</button></a>                    </figcaption>
                         <%end%>
                 </div>
             </div>
@@ -93,9 +93,9 @@
                             <% @hint_challenges.each do |t|%>
                             <% k = Challenge.find(t.challenge_id)%>
                                 <tr>
-                                    <th class="text-center px-0" scope="col"><%= t.flag_timestamp%></th>
+                                    <th class="text-center px-0" scope="col"><%= t.hint_timestamp%></th>
                                     <th class="text-center" scope="col"><%= k.nome%></th>
-                                    <th class="text-center" scope="col"><%= k.score%></th>
+                                    <th class="text-center" scope="col">50</th>
                                 </tr>
                             <%end%>
                         </tbody>

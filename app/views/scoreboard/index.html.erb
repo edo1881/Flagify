@@ -12,7 +12,7 @@
             <%= form_with(url:"/category_filter",method: :post) do |f|%>
                 <select class="form-select" name="categories">
                     <option value="-1"><%= @category%></option>
-                    <%Challenge.select("category").distinct.each do |c|%>
+                    <%Challenge.where(:user_id => User.where(:role => "admin")).select("category").distinct.each do |c|%>
                         <option value="<%=c.category%>"><%=c.category%></option>
                         
                     <%end%>

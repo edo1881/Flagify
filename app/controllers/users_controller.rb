@@ -22,15 +22,29 @@ class UsersController < ApplicationController
     end
 
 
-   def become_player
-    if current_user.role == "creator"
-       current_user.role="player" 
-       User.find(current_user.id).update(:role => "player")
-       Challenge.where(:user_id => current_user.id).delete_all
-       User.find(current_user.id).challenges.delete_all
+    def become_player
+        if current_user.role == "creator"
+        current_user.role="player" 
+        User.find(current_user.id).update(:role => "player")
+        Challenge.where(:user_id => current_user.id).delete_all
+        User.find(current_user.id).challenges.delete_all
+        end
+        respond_to do |format|
+            format.html { redirect_to profile_path, notice: "Became player successfully." }
+        end
     end
-    respond_to do |format|
-       format.html { redirect_to profile_path, notice: "Became player successfully." }
+
+    def delete_user
+        user = User.find(params[:id])
+        if current_user.id == user.id
+            if user.role != "admin"
+                UserChallenge.where(:user_id => user.id).delete_all
+                Challenge.where(:user => user).delete_all
+            end
+            User.find(user.id).delete 
+        end
+        respond_to do |format|
+            format.html { redirect_to root_path, notice: "Profile deleted successfully." }
+        end
     end
- end
 end
