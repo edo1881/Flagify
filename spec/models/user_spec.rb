@@ -18,7 +18,7 @@ RSpec.describe User, :type => :model do
   end
 
   it "admin can create official challenge" do
-    @challenge = Challenge.create(:id => 1, :nome => "nome", :testo => "testo", :flag => "flag", :category => "category", :hint => "Scrivi flag", :score => 100, :user_id => 1)
+    @challenge = Challenge.create(:nome => "nome", :testo => "testo", :flag => "flag", :category => "category", :hint => "Scrivi flag", :score => 100, :user_id => 1)
     expect(@challenge.user_id).to eq @user.id
   end   
 end
