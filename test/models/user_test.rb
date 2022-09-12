@@ -12,8 +12,6 @@ class UserTest < ActiveSupport::TestCase
     it "can create an admin account if in amin_list" do
       expect(User.new(:email => "admin@admin.it", :password => "12345678", :password_confirmation => "12345678").role).to eq "admin"
     end
-
-    
-   
+       
   end
 end

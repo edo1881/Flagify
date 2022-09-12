@@ -30,7 +30,7 @@ class UsersController < ApplicationController
         User.find(current_user.id).challenges.delete_all
         end
         respond_to do |format|
-            format.html { redirect_to profile_path, notice: "Became player successfully." }
+            format.html { redirect_to "/users/#{current_user.id}", notice: "Became player successfully." }
         end
     end
 
