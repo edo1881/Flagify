@@ -27,7 +27,7 @@
                 <div class="owl-carousel-<%=category.category%> owl-carousel owl-theme">
                     <% Challenge.where(:user_id => User.where(:role => "admin"), :category => category.category).each do |challenge|%>
                         <div class="ms-2 me-2 p-4">
-                            <a data-remote="true" data-method="get" href="<%="/challenges/#{challenge.id}"%>" style="color: black; text-decoration:none;">
+                            <a data-remote="true" data-method="get" id="<%="/challenges/#{challenge.id}"%>" href="<%="/challenges/#{challenge.id}"%>" style="color: black; text-decoration:none;">
                                 <% if UserChallenge.where(:user_id =>current_user.id, :challenge_id => challenge.id).where.not(:flag_timestamp => nil).count == 1%>
                                     <div class="card" id="<%=challenge.id%>" solved="true" style="background: rgb(33, 210, 74);">
                                 <%else%>

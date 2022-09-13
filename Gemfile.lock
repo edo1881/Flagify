@@ -214,6 +214,8 @@ GEM
       rexml
     kramdown-parser-gfm (1.1.0)
       kramdown (~> 2.0)
+    launchy (2.5.0)
+      addressable (~> 2.7)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -463,6 +465,7 @@ DEPENDENCIES
   font-awesome-rails
   google_drive
   jbuilder (~> 2.7)
+  launchy
   net-smtp
   omniauth
   omniauth-google-oauth2

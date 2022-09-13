@@ -37,9 +37,9 @@
                         <div><strong ><h5> Role: <%= @user.role%></h5></strong></div>
                         <% if current_user==@user%>
                             <% if @user.role=="player" || @user.role==nil %>
-                                <a href=<%= new_challenge_url %>><button  style="border-radius: 30px;background: rgb(255, 120, 255);">Become a creator</button></a>
+                                <a href=<%= new_challenge_url %> id="become_creator"><button  style="border-radius: 30px;background: rgb(255, 120, 255);">Become a creator</button></a>
                             <% elsif @user.role=="creator" %>
-                                <a href="/users/become_player/<%=@user.id%>> data-confirm="If you become a player,all your challenges will be eliminated. Are you sure?"><button  style="border-radius: 30px;background: rgb(255, 120, 255);" >Become a player</button></a>
+                                <a href="/users/become_player/<%=@user.id%> data-confirm="If you become a player,all your challenges will be eliminated. Are you sure?"><button  style="border-radius: 30px;background: rgb(255, 120, 255);" >Become a player</button></a>
                             <% end %>
                         <%end%>
                         <% if current_user==@user || current_user.role =="admin"%>
