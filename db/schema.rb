@@ -13,15 +13,15 @@
 ActiveRecord::Schema.define(version: 2022_09_04_120135) do
 
   create_table "challenges", force: :cascade do |t|
-    t.string "nome"
+    t.string "nome", null: false
     t.string "testo"
     t.integer "n_utenti_solv"
-    t.string "flag"
+    t.string "flag", null: false
     t.string "url_image"
-    t.string "category"
+    t.string "category", null: false
     t.string "hint"
-    t.integer "score"
-    t.integer "user_id"
+    t.integer "score", default: 0
+    t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_challenges_on_user_id"
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 2022_09_04_120135) do
   create_table "user_challenges", force: :cascade do |t|
     t.string "hint_timestamp"
     t.string "flag_timestamp"
-    t.integer "user_id"
-    t.integer "challenge_id"
+    t.integer "user_id", null: false
+    t.integer "challenge_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["challenge_id"], name: "index_user_challenges_on_challenge_id"

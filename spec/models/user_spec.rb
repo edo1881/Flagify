@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-  before(:each) {@user = User.new(:id => 1, :email => "test@test.it", :password => "12345678", :password_confirmation => "12345678")}
+  before(:each) {@user = User.new(:id => 1, :email => "test0@test.it", :password => "12345678", :password_confirmation => "12345678")}
   before(:each) {@user_admin = User.new(:id => 2, :email => "admin@admin.it", :password => "12345678", :password_confirmation => "12345678")}
   before(:each) {@user_creator = User.new(:id => 3, :email => "test1@test.it", :password => "12345678", :password_confirmation => "12345678", :role => "creator")}
   

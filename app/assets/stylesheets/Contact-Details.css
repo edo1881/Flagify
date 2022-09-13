@@ -1,7 +1,7 @@
 .btn-prime {
   color: #fff;
   background-color: rgb(25, 25, 255);
-  box-shadow: 0 0 10px rgba(0, 255, 255);
+  box-shadow: 0 0 10px rgb(0, 255, 255);
 }
 
 .bs-icon {
@@ -41,7 +41,7 @@
 .bs-icon.bs-icon-primary {
   color: var(--bs-white);
   background: rgb(25, 25, 255);
-  box-shadow: 0 0 10px rgba(0, 255, 255);
+  box-shadow: 0 0 10px rgb(0, 255, 255);
 }
 
 .bs-icon.bs-icon-primary-light {

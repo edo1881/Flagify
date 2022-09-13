@@ -1,3 +1,14 @@
-
 //= link_tree ../images
 //= link_directory ../stylesheets .css
+//= link application.css
+//= link challenges.css
+//= link Contact-Details.css
+//= link contact_form.scss
+//= link create_chall.css
+//= link home.css
+//= link login.css
+//= link owl.css
+//= link owl_theme.css
+//= link profile.css
+//= link scoreboard.css
+//= link signup.css

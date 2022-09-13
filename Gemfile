@@ -41,11 +41,10 @@ gem 'bootsnap', '>= 1.4.4', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 6.0.0.rc1'
+  gem 'rails-controller-testing'
 end
 
-group :development, :test do
-  gem 'rspec-rails', '~> 6.0.0.rc1'
-end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
@@ -62,6 +61,12 @@ group :test do
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+
+  #cucumber
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner' 
+  gem 'cucumber-rails-training-wheels'
+
 end
 
 

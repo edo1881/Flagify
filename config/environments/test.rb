@@ -4,7 +4,7 @@ require "active_support/core_ext/integer/time"
 # test suite. You never need to work with it otherwise. Remember that
 # your test database is "scratch space" for the test suite and is wiped
 # and recreated between test runs. Don't rely on the data there!
-
+Rails.application.routes.default_url_options[:host]= 'localhost:3000' 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -25,7 +25,7 @@ Rails.application.configure do
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
   config.cache_store = :null_store
-
+  routes.default_url_options[:host] = 'localhost:3000'
   # Raise exceptions instead of rendering exception templates.
   config.action_dispatch.show_exceptions = false
 
