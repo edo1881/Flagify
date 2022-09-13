@@ -9,19 +9,19 @@ RSpec.describe UserChallenge, type: :model do
   end
 
   it "can't create a user_challenge without a valid user" do
-    @user_challenge.user_id = 1
+    @user_challenge.user_id = 200
     expect(@user_challenge).to_not be_valid
   end
 
   it "can't create a user_challenge without a challenge" do
-    @user_challenge.user_id = 1
+    @user_challenge.user_id = 200
     @user_challenge.challenge_id = nil
     expect(@user_challenge).to_not be_valid
   end
 
   it "can't create a user_challenge without a valid challenge" do
     @user_challenge.user_id = 1
-    @user_challenge.challenge_id = 1
+    @user_challenge.challenge_id = 200
     expect(@user_challenge).to_not be_valid
   end
 end
