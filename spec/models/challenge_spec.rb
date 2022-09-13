@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Challenge, type: :model do
   before(:each) {
-    @challenge = Challenge.create(id: 100, nome: "Challenge 1", testo: "testo", flag: "flag", category: "Web", hint: "Scrivi flag", score: 100, user_id: 1)
+    @challenge = Challenge.create(id: 1, nome: "Challenge 1", testo: "testo", flag: "flag", category: "Web", hint: "Scrivi flag", score: 100, user_id: nil)
   }
 
   it "can't create a challenge without a user" do
