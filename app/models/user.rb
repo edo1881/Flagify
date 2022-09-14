@@ -5,6 +5,9 @@ class User < ApplicationRecord
   has_many :challenges
   has_many :user_challenges, dependent: :delete_all
   has_many :solved_challenges, :through => :user_challenges, dependent: :delete_all
+  validates :email, :presence => true
+  validates :role, :presence => true
+
   ADMIN_LIST=["edo.gi00@hotmail.it","giuggioloni.1881780@studenti.uniroma1.it", "thomas.kirschner2901@gmail.com", 'admin@admin.it']
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
