@@ -7,6 +7,7 @@
 one: 
   full_name: test
   email: test@test.it
+  password: 12345678
 # column: value
 #
 two: {}

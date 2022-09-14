@@ -18,5 +18,5 @@ And("I create a challenge with {string}, {string}, {string}") do |nome, categori
 end
 
 When('I press card {string}') do |id|
-    click_link "/challenges/"+id
+    press "//div[@class=\"card\"][@id=\"1\"]"
 end
