@@ -23,11 +23,12 @@ class UsersController < ApplicationController
 
 
     def become_player
+        current_user = User.find(params[:id])
         if current_user.role == "creator"
-        current_user.role="player" 
-        User.find(current_user.id).update(:role => "player")
-        Challenge.where(:user_id => current_user.id).delete_all
-        User.find(current_user.id).challenges.delete_all
+            current_user.role="player" 
+            User.find(current_user.id).update(:role => "player")
+            Challenge.where(:user_id => current_user.id).delete_all
+            User.find(current_user.id).challenges.delete_all
         end
         respond_to do |format|
             format.html { redirect_to "/users/#{current_user.id}", notice: "Became player successfully." }

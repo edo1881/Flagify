@@ -25,7 +25,7 @@ class ChallengesController < ApplicationController
          end
       end 
       respond_to do |format|
-         format.js
+         format.js 
       end
    end
    def check_flag
@@ -41,8 +41,13 @@ class ChallengesController < ApplicationController
                UserChallenge.where(:user_id =>current_user.id, :challenge_id => params[:id]).update(:flag_timestamp => Time.now.utc.strftime("%Y/%m/%d %H:%M:%S"))
                puts "UserChallenge aggiornata con flag"
             else
-               UserChallenge.create(:id => UserChallenge.last.id+1, :user_id =>current_user.id, :challenge_id => params[:id], :flag_timestamp => Time.now.utc.strftime("%Y/%m/%d %H:%M:%S"))
-               puts "UserChallenge creata con flag"
+               @id = 0
+               if UserChallenge.count > 0
+                  @id = UserChallenge.last.id+1
+               end
+               UserChallenge.create(:id => @id, :user_id =>current_user.id, :challenge_id => params[:id], :flag_timestamp => Time.now.utc.strftime("%Y/%m/%d %H:%M:%S"))
+               
+                  puts "UserChallenge creata con flag"
             end
             @alert = 1 
          end
@@ -66,7 +71,11 @@ class ChallengesController < ApplicationController
       if UserChallenge.where(:user_id => current_user.id, :challenge_id => @current_challenge.id).exists?
          UserChallenge.where(:user_id => current_user.id, :challenge_id => @current_challenge.id).update(:hint_timestamp => Time.now.utc.strftime("%Y/%m/%d %H:%M:%S"))
       else
-         UserChallenge.create(:id => UserChallenge.last.id+1, :user_id => current_user.id, :challenge_id => @current_challenge.id, :hint_timestamp => Time.now.utc.strftime("%Y/%m/%d %H:%M:%S"))
+         @id = 0
+         if UserChallenge.count > 0
+            @id = UserChallenge.last.id+1
+         end
+         UserChallenge.create(:id => @id, :user_id => current_user.id, :challenge_id => @current_challenge.id, :hint_timestamp => Time.now.utc.strftime("%Y/%m/%d %H:%M:%S"))
       end
       respond_to do |format|
          format.js 
