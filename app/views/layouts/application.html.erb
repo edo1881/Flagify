@@ -68,6 +68,28 @@
             </div>
         </nav>
     </div>
+     <% if flash[:success] || flash[:error] %> 
+     <div class=" w-50  alert alert-success d-flex alert-dismissable fade show" role="alert">
+            <% if flash[:success] %> 
+                <strong><%= flash[:success] %></strong>
+            <% elsif flash[:error]%> 
+                 <strong><%flash[:error]%></strong>
+            <% end %>
+         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <%end %>
+      <% if flash[:notice] %>
+      <div class=" w-50  alert alert-success d-flex alert-dismissable fade show" role="alert">
+          <strong><%= flash[:notice] %></strong>
+       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <%end %>
+      <% if flash[:alert] %>
+      <div class=" w-50  alert alert-success d-flex alert-dismissable fade show" role="alert">
+         <strong><%= flash[:alert] %></strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      <%end %>
     <%= yield %>
   </body>
   

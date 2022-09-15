@@ -1,2 +1,2 @@
-$('#hint-content').html("<%= j render 'hint_modal', challenge: @current_challenge %>");
+$('#hint-content').html("<%= j render 'hint_modal', challenge: @current_challenge,remote: true %>");
 $('#modalHint').modal('show');

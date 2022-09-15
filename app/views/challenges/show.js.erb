@@ -1,2 +1,2 @@
-$('#challenge-content').html("<%= j render 'challenge_modal', challenge: @current_challenge %>");
+$('#challenge-content').html("<%= j render 'challenge_modal', challenge: @current_challenge,remote: true %>");
 $('#myModal').modal('show');

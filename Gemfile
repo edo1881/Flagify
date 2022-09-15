@@ -11,7 +11,7 @@ gem 'omniauth-rails_csrf_protection'
 gem 'net-smtp'
 gem 'google_drive'
 gem "font-awesome-rails"
-
+gem 'poltergeist'
 #gem 'jquery-turbolinks'
 #gem 'jquery-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
@@ -67,11 +67,6 @@ group :test do
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
-
-  #cucumber
-  gem 'cucumber-rails', require: false
-  gem 'database_cleaner' 
-  gem 'cucumber-rails-training-wheels'
 
 end
 

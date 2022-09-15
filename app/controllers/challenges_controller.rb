@@ -25,7 +25,7 @@ class ChallengesController < ApplicationController
          end
       end 
       respond_to do |format|
-         format.js 
+         format.js {}
       end
    end
    def check_flag
@@ -109,6 +109,7 @@ class ChallengesController < ApplicationController
          end
       end
       @challenge=Challenge.new(challenge_params.merge(:url_image => @names, :user_id => current_user.id))
+      authorize! :create, @challenge, :message => "BEWARE: you are not authorized to create new challenges."
       respond_to do |format|
          if @challenge.save 
             if current_user.role=="player" 
@@ -128,6 +129,7 @@ class ChallengesController < ApplicationController
 
 
    def update
+      authorize! :update, @challenge, :message => "BEWARE: you are not authorized to update challenges."
       @names=""
       @file_list=params[:challenge][:upfile]
       if !@file_list.nil? &&@file_list.length() > 1
@@ -146,6 +148,7 @@ class ChallengesController < ApplicationController
    end
 
    def destroy
+      authorize! :destroy, @challenge, :message => "BEWARE: you are not authorized to create destroy challenges."
       GoogledriveController.new.googledrive if !$session
       if !@challenge.url_image.nil?
          @names=@challenge.url_image.split('+')

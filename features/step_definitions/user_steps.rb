@@ -10,6 +10,10 @@ Given("I am a registered user as {string}, {string}, {int}") do |email, password
     click_button "login"
 end
 
+And("I submit {string}") do |flag|
+    post "/challenges/check_flag", :params => {:flag => flag,format: :js}
+end
+
 And("I create a challenge with {string}, {string}, {string}") do |nome, categoria, flag|
     fill_in "nome", :with => nome
     fill_in "category", :with => categoria

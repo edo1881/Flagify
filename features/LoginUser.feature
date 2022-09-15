@@ -1,6 +1,7 @@
+
 Feature: User can login in website
 
-Scenario: As an unregistred user i want to Signup
+Scenario: As an unregistered user i want to Signup
     Given I am on the Flagify home page
     When I follow "Signup"
     Then I should be on the signup page
@@ -10,7 +11,7 @@ Scenario: As an unregistred user i want to Signup
     And I press "signup"
     Then I should be on the Flagify home page
 
-Scenario: As a registred player i want to become a creator and create a challenge
+Scenario: As a registered player i want to become a creator and create a challenge
     # Given I am a registered user as "player@gmail.it", "12345678", 1
     Given I am on the Flagify home page
     When I follow "Signup"
@@ -34,11 +35,12 @@ Scenario: As a registred player i want to become a creator and create a challeng
     # When I press "commit"
     # Then I should be on the challenges page
     # Then I should see "test"
-
+    
 Scenario: I wanto to solve a challenge
-    Given I am a registered user as "player@gmail.it", "12345678", 1
+    Given I am a registered user as "player@admin.it", "12345678", 1
     And I follow "challenges"
     Then I should be on the challenges page
     # Then show me the page
-    When I press card "1"
-    # Then I follow "/challenges/1"
+    When I click on "/challenges/1"
+    And I submit "flag{My_f1R57_54Ni7Y_ch3Ck}"
+   # Then I should see

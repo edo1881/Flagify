@@ -6,16 +6,6 @@
 </head>
 
 <body>
-    <% if flash[:success] || flash[:error] %> 
-    <div class=" w-50  alert alert-success d-flex alert-dismissable fade show" role="alert">
-            <% if flash[:success] %> 
-                <strong><%= flash[:success] %></strong>
-            <% elsif flash[:error]%> 
-                 <strong><%flash[:error]%></strong>
-            <% end %>
-         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-    <%end %>
     <main role="main" class="container">
         <div class="container">
             <div class="text-center p-4 p-lg-5">
