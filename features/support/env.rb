@@ -7,6 +7,7 @@
 require 'cucumber/rails'
 
 
+ENV['CUCUMBER'] = "true"
 
 
 # frozen_string_literal: true

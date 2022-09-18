@@ -14,7 +14,7 @@ class ChallengesController < ApplicationController
       @challenge = Challenge.find(params[:id])
       @current_challenge = @challenge
 
-      if Rails.env.test?
+      if ENV["CUCUMBER"]
          respond_to do |format|
             format.html {render '_challenge_modal', challenge: @current_challenge, remote: true}
          end
@@ -62,7 +62,7 @@ class ChallengesController < ApplicationController
       else
          @alert = 2
       end
-      if Rails.env.test?
+      if ENV["CUCUMBER"]
          respond_to do |format|
             format.html {render '_check_flag', message: @alert, remote: true}
          end
