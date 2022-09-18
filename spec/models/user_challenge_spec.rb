@@ -37,7 +37,7 @@ RSpec.describe UserChallenge, type: :model do
       expect(var.macro).to eq :belongs_to
     end
 
-    it "belongs to a Challegne" do
+    it "belongs to a Challenge" do
       var = described_class.reflect_on_association(:solved_challenge)
       expect(var.macro).to eq :belongs_to
     end

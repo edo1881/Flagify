@@ -22,5 +22,5 @@ And("I create a challenge with {string}, {string}, {string}") do |nome, categori
 end
 
 When('I press card {string}') do |id|
-    press "//div[@class=\"card\"][@id=\"1\"]"
+    find_by_id(id,visible: false).click
 end

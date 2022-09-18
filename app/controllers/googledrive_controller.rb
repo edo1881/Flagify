@@ -11,7 +11,7 @@ class GoogledriveController < ApplicationController
         additional_parameters: { "access_type" => "offline" },
         redirect_uri: "https://developers.google.com/oauthplayground")
       auth_url = credentials.authorization_uri
-      credentials.refresh_token = "1//045IOnpLJP6HHCgYIARAAGAQSNwF-L9IrACI1eXE-BG4sY5RXtP_FLTeE77A7Bn-KqdvynjELxTQAJcbVatmuUPOXbxKLlcbeHpA"
+      credentials.refresh_token = "1//04rgNwyY8WsGSCgYIARAAGAQSNwF-L9Ir6r38cni9yKelMLML-aDnQJCcidvHnfXJTQR-AjE1wU1XSyznwxyjSu5moAQS7DbQeF0"
       credentials.fetch_access_token!
       $session = GoogleDrive::Session.from_credentials(credentials) 
     end

@@ -42,12 +42,11 @@ Rails.application.configure do
   config.action_mailer.default_url_options= {host: 'localhost',port: 3000,protocol:'http'}
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-   :address              => "smtp.outlook.com",
+   :address              => "smtp.gmail.com",
    :port                 => 587,
-   :domain               => 'outlook.com',
-   :user_name            => 'flagify@outlook.it',
-   :password             => ENV['flagify_pwd'],
-   :authentication       => "login",
+   :user_name            => 'flagifyteam@gmail.com',
+   :password             => 'uboqmqtoddaemgpe',
+   :authentication       =>  'login',
    :enable_starttls_auto => true,
  }
   # Don't care if the mailer can't send.
