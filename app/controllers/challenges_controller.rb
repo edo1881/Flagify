@@ -112,6 +112,10 @@ class ChallengesController < ApplicationController
    end
 
    def create
+      if current_user.role=="player" 
+         current_user.role="creator" 
+         User.find(current_user.id).update(:role => "creator")
+      end
       puts "IN CREATE !!!!!!!!!!!!!!!!!!!!!!!!!"
       @names=""
       @file_list=params[:challenge][:upfile]
@@ -126,13 +130,8 @@ class ChallengesController < ApplicationController
       puts current_user
       puts current_user.id
       @challenge=Challenge.new(challenge_params.merge(:url_image => @names, :user_id => current_user.id))
-      authorize! :create, @challenge, :message => "BEWARE: you are not authorized to create new challenges."
       respond_to do |format|
          if @challenge.save 
-            if current_user.role=="player" 
-               current_user.role="creator" 
-               User.find(current_user.id).update(:role => "creator")
-            end
             format.html { redirect_to challenges_url, notice: "Challenge was successfully created." }
          else
             format.html { render :new, status: :unprocessable_entity }
@@ -146,7 +145,13 @@ class ChallengesController < ApplicationController
 
 
    def update
-      authorize! :update, @challenge, :message => "BEWARE: you are not authorized to update challenges."
+      if current_user.role=="player" 
+         :message => "BEWARE: you are not authorized to update challenges." 
+         redirect_to root_path
+      elsif !current_user.challenges.include? @challenge 
+         :message => "BEWARE: you are not authorized to update challenge #{@challenge.title}." 
+         redirect_to root_path
+      end
       @names=""
       @file_list=params[:challenge][:upfile]
       if !@file_list.nil? &&@file_list.length() > 1
@@ -165,7 +170,13 @@ class ChallengesController < ApplicationController
    end
 
    def destroy
-      authorize! :destroy, @challenge, :message => "BEWARE: you are not authorized to create destroy challenges."
+      if current_user.role=="player" 
+         :message => "BEWARE: you are not authorized to delete challenges." 
+         redirect_to root_path
+      elsif !current_user.challenges.include? @challenge 
+         :message => "BEWARE: you are not authorized to delete challenge #{@challenge.title}." 
+         redirect_to root_path
+      end
       GoogledriveController.new.googledrive if !$session
       if !@challenge.url_image.nil?
          @names=@challenge.url_image.split('+')
