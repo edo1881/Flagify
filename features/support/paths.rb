@@ -29,6 +29,9 @@ module NavigationHelpers
 
     when /^the create challenge page$/ then 
       '/challenges/new'
+    
+    when /^the first challenge page$/ then 
+      '/challenges/1'
       
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

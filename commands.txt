@@ -1,3 +1,4 @@
 bundle install
 yarn add @popperjs/core jquery bootstrap
-bin/rake webpacker:install # RISPONDERE n !!!!
+bin/rake webpacker:install 
+rails db:migrate

@@ -11,36 +11,41 @@ Scenario: As an unregistered user i want to Signup
     And I press "signup"
     Then I should be on the Flagify home page
 
-Scenario: As a registered player i want to become a creator and create a challenge
-    # Given I am a registered user as "player@gmail.it", "12345678", 1
-    Given I am on the Flagify home page
-    When I follow "Signup"
-    Then I should be on the signup page
-    When I fill in "email" with "player@admin.it" 
-    And I fill in "password" with "12345678"
-    And I fill in "password_confirmation" with "12345678"
-    And I press "signup"
-    Then I should be on the Flagify home page
-    When I follow "button_profile"
-    Then I should be on the profile page 1
-    And I should see "Become a creator"
-    Then I follow "become_creator"
-    Then I should be on the create challenge page
-    And I fill in "nome" with "test challenge"
-    And I fill in "category" with "test category"
-    And I fill in "testo" with "testo"
-    And I fill in "hint" with "hint test"
-    And I fill in "flag" with "flag"
-    # Then show me the page
-    # When I press "commit"
-    # Then I should be on the challenges page
-    # Then I should see "test"
+# Scenario: As a registered player i want to become a creator and create a challenge
+#     # Given I am on the Flagify home page
+#     # When I follow "Signup"
+#     # Then I should be on the signup page
+#     # When I fill in "email" with "player@admin.it" 
+#     # And I fill in "password" with "12345678"
+#     # And I fill in "password_confirmation" with "12345678"
+#     # And I press "signup"
+#     Given I am a registered user as "player@admin.it", "12345678", 1
+
+#     Then I should be on the Flagify home page
+#     When I follow "button_profile"
+#     Then I should be on the profile page 1
+#     And I should see "Become a creator"
+#     Then I follow "become_creator"
+#     Then I should be on the create challenge page
+#     And I fill in "nome" with "test challenge"
+#     And I fill in "category" with "test category"
+#     And I fill in "testo" with "testo"
+#     And I fill in "hint" with "hint test"
+#     And I fill in "flag" with "flag"
+#     # And I submit "test challenge", "test category", "testo", "hint test", "flag"
+#     And I press "commit"
+#     # And show me the page
+#     # And I follow "challenges"
+#     Then I should be on the challenges page
+#     And I should see "test challenge"
     
-Scenario: I wanto to solve a challenge
+Scenario: I want to solve a challenge
     Given I am a registered user as "player@admin.it", "12345678", 1
     And I follow "challenges"
     Then I should be on the challenges page
-    # Then show me the page
-    When I click on "/challenges/1"
-    And I submit "flag{My_f1R57_54Ni7Y_ch3Ck}"
-   # Then I should see
+    # since jQuery doesn't work with cucumber
+    Given I am on the first challenge page  
+
+    And I fill in "flag" with "flag{My_f1R57_54Ni7Y_ch3Ck}"
+    And I press "btn_flag"
+    Then I should see "You solved the challenge"
