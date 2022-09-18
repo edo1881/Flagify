@@ -5,7 +5,6 @@ RSpec.describe "Challenges", type: :request do
     host! "localhost:3000"
     @user = User.create(:id => 1, :email => "creator@c.it", :password => "12345678", :password_confirmation => "12345678", :role => "creator") 
     @challenge = Challenge.create(id: 1, nome: "Challenge 1", testo: "testo", flag: "flag", category: "Web", hint: "Scrivi flag", score: 100, user_id: 1)
-    # @user_challenge = UserChallenge.create(:id => 1, :flag_timestamp => nil, :hint_timestamp  => "2022/09/09 16:30:27", :user_id => 1, :challenge_id => 1)
   end
 
   describe "GET /challenges" do

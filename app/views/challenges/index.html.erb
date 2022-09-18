@@ -85,7 +85,12 @@
         <%end%>
     </div>
 
-    <div id='challenge-content'></div>
+    <div id='challenge-content'>
+    <% if Rails.env.test? %>
+        <%@current_challenge = Challenge.first%>
+        <%= render 'challenge_modal', challenge: @current_challenge,remote: false %>
+    <%end%>
+    </div>
 </main>
     
     <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" %>

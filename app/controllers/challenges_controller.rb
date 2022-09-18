@@ -13,6 +13,13 @@ class ChallengesController < ApplicationController
    def show
       @challenge = Challenge.find(params[:id])
       @current_challenge = @challenge
+
+      if ENV["CUCUMBER"]
+         respond_to do |format|
+            format.html {render '_challenge_modal', challenge: @current_challenge, remote: true}
+         end
+      else
+
       if @current_challenge.url_image
          GoogledriveController.new.googledrive if !$session
          @names=@current_challenge.url_image.split('+')
@@ -27,9 +34,10 @@ class ChallengesController < ApplicationController
       respond_to do |format|
          format.js {}
       end
+      end
    end
    def check_flag
-      puts "Check flag function"
+      puts "Check flag function !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
       @flag = params[:flag]
       @alert = 3
       puts Time.now.utc.strftime("%Y/%m/%d %H:%M:%S")
@@ -54,8 +62,14 @@ class ChallengesController < ApplicationController
       else
          @alert = 2
       end
-      respond_to do |format|
-         format.js
+      if ENV["CUCUMBER"]
+         respond_to do |format|
+            format.html {render '_check_flag', message: @alert, remote: true}
+         end
+      else
+         respond_to do |format|
+            format.js
+         end
       end
    end
    def show_hint
@@ -98,6 +112,7 @@ class ChallengesController < ApplicationController
    end
 
    def create
+      puts "IN CREATE !!!!!!!!!!!!!!!!!!!!!!!!!"
       @names=""
       @file_list=params[:challenge][:upfile]
       puts "FILE LIST : #{@file_list}"
@@ -108,6 +123,8 @@ class ChallengesController < ApplicationController
             @names.concat('+')
          end
       end
+      puts current_user
+      puts current_user.id
       @challenge=Challenge.new(challenge_params.merge(:url_image => @names, :user_id => current_user.id))
       authorize! :create, @challenge, :message => "BEWARE: you are not authorized to create new challenges."
       respond_to do |format|

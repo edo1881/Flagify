@@ -11,7 +11,11 @@ Given("I am a registered user as {string}, {string}, {int}") do |email, password
 end
 
 And("I submit {string}") do |flag|
-    post "/challenges/check_flag", :params => {:flag => flag,format: :js}
+    post "/challenges/check_flag/", :params => {:id => 1, :flag_response => flag,format: :js}
+end
+
+And("I submit {string}, {string}, {string}, {string}, {string}") do |nome, category, testo, hint, flag|
+    post "/challenges", :params => {:challenge => {:nome => nome,  :category => category, :flag => flag, :testo => testo, :hint => hint}, format: :html}
 end
 
 And("I create a challenge with {string}, {string}, {string}") do |nome, categoria, flag|
@@ -21,6 +25,7 @@ And("I create a challenge with {string}, {string}, {string}") do |nome, categori
     click_button "commit"
 end
 
-When('I press card {string}') do |id|
-    find_by_id(id,visible: false).click
+When("I click {string}") do |pulsante|
+    find("//*[@id=\""+ pulsante+"\"]").click
 end
+
