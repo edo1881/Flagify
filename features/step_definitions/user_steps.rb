@@ -1,5 +1,5 @@
 Given("I am a registered user as {string}, {string}, {int}") do |email, password, id|
-    User.create(:email => email, :password => password, :password_confirmation => password, :id => id)
+    User.create(:email => email, :password => password, :password_confirmation => password, :id => id,:role =>"creator")
     User.create(:email => "admin@admin.it", :password => password, :password_confirmation => password, :id => 2, :role => "admin")
 
     Challenge.create([{id: 1, nome: "How to start", testo: "In questa serie di sfide, chiamate challenge, verranno introdotti alcuni concetti fondamentali riguardo alle competizioni Capture The Flag (CTF), in particolare del formato jeopardy. In ogni challenge ti verrà richiesto di trovare un''informazione segreta chiamata flag, sfruttando le vulnerabilità presenti all''interno della sfida. Trovando ed inviando la flag alla piattaforma otterrai dei punti in base alla difficoltà della sfida che ti farà salire in classifica. \nPer questa primissima challenge invia questa flag nel campo qua sotto: \nflag{My_f1R57_54Ni7Y_ch3Ck}", flag: "flag{My_f1R57_54Ni7Y_ch3Ck}", category: "Intro", hint: "Scrivi flag{My_f1R57_54Ni7Y_ch3Ck}", score: 100, user_id: 2}, 
@@ -14,8 +14,8 @@ And("I submit {string}") do |flag|
     post "/challenges/check_flag/", :params => {:id => 1, :flag_response => flag,format: :js}
 end
 
-And("I submit {string}, {string}, {string}, {string}, {string}") do |nome, category, testo, hint, flag|
-    post "/challenges", :params => {:challenge => {:nome => nome,  :category => category, :flag => flag, :testo => testo, :hint => hint}, format: :html}
+And("I submit {string}, {string}, {string}, {string}, {string}, {string}") do |nome, category, testo, hint, flag,score|
+    post "/challenges", :params => {:challenge => {:nome => nome,  :category => category, :flag => flag, :testo => testo, :hint => hint, :score => score }, format: :html}
 end
 
 And("I create a challenge with {string}, {string}, {string}") do |nome, categoria, flag|

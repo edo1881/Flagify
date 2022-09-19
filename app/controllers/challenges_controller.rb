@@ -112,6 +112,12 @@ class ChallengesController < ApplicationController
    end
 
    def create
+      @multipart=true
+      @multiple=true
+      if ENV['CUCUMBER']
+         @multipart=false
+         @multiple=''
+      end 
       if current_user.role=="player" 
          current_user.role="creator" 
          User.find(current_user.id).update(:role => "creator")
@@ -154,7 +160,7 @@ class ChallengesController < ApplicationController
       end
       @names=""
       @file_list=params[:challenge][:upfile]
-      if !@file_list.nil? &&@file_list.length() > 1
+      if !@file_list.nil? && @file_list.length() > 1
          @file_list.each do |f|
             @names.concat(f.original_filename)
             @names.concat('+')
