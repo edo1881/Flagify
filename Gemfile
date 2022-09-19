@@ -4,7 +4,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.1.2'
 gem 'figaro'
 gem'devise'
-gem 'canard', '~> 0.6.2.pre'
 gem 'omniauth'
 gem 'role_model'
 gem 'omniauth-google-oauth2'
@@ -12,7 +11,7 @@ gem 'omniauth-rails_csrf_protection'
 gem 'net-smtp'
 gem 'google_drive'
 gem "font-awesome-rails"
-gem 'poltergeist'
+# gem 'poltergeist'
 #gem 'jquery-turbolinks'
 #gem 'jquery-rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
@@ -68,6 +67,7 @@ group :test do
   gem 'selenium-webdriver', '>= 4.0.0.rc1'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  
 
 end
 

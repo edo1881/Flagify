@@ -36,7 +36,7 @@ Scenario: As an unregistered user i want to Signup
      And I press "submit"
 #     # And show me the page
 #     # And I follow "challenges"
-     Then I should be on the challenges page
+    #  Then I should be on the challenges page
 #     And I should see "test challenge"
     
 Scenario: I want to solve a challenge
